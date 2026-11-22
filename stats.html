@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>统计查询 · 护理人员档案管理系统</title>
+<meta name="description" content="护理人员档案管理系统高保真原型 · 统计查询">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <div class="brand-mark">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M2.5 12h3.2l1.6-4.2 2.4 8.4 1.9-4.2h2.6" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M17.6 9.4v5.2M15 12h5.2" stroke="#8FC6EE" stroke-width="1.9" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="brand-txt"><b>护理人员档案管理系统</b><span>江城市第一人民医院 · 护理部</span></div>
+  </div>
+  <div class="topbar-spacer"></div>
+  <div class="top-actions">
+    <button class="top-btn" onclick="location.href='alerts.html'"><svg class="ico ico-14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m21.73 18l-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3M12 9v4m0 4h.01"/></svg> 证件到期提醒 <span class="badge">17</span></button>
+    <button class="top-ico" data-pop="#popMsg" aria-label="消息通知"><svg class="ico ico-18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.268 21a2 2 0 0 0 3.464 0m-10.47-5.674A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"/></svg><i class="dot"></i></button>
+    <button class="top-ico" title="帮助中心" aria-label="帮助中心"><svg class="ico ico-18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3m.08 4h.01"/></g></svg></button>
+    <span class="top-sep"></span>
+    <button class="user-box" data-menu-open="#menuUser" aria-haspopup="true">
+      <span class="avatar a28">李静</span>
+      <span class="user-meta"><b>李静怡</b><span>护理部 · 系统管理员</span></span>
+      <svg class="ico ico-14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m6 9l6 6l6-6"/></svg>
+    </button>
+  </div>
+</header>
+<div class="pop" id="popMsg" role="dialog" aria-label="消息通知">
+  <div class="pop-hd"><span><svg class="ico ico-14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.268 21a2 2 0 0 0 3.464 0m-10.47-5.674A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"/></svg> 待办与提醒</span><span class="tag tag-red">3 类</span></div>
+  <div class="pop-bd">
+    <div style="padding:12px 14px">
+      <div class="list-line"><span class="tic" style="width:30px;height:30px;border-radius:4px;background:var(--red-bg);color:var(--red);display:grid;place-items:center"><svg class="ico ico-14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m21.73 18l-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3M12 9v4m0 4h.01"/></svg></span>
+        <span class="g"><b>执业证书即将到期 17 人</b><span>其中 4 人已过期，请尽快通知科室办理延续注册</span></span>
+        <a href="alerts.html" class="link-btn">处理</a></div>
+      <div class="list-line"><span style="width:30px;height:30px;border-radius:4px;background:var(--amber-bg);color:var(--amber);display:grid;place-items:center"><svg class="ico ico-14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m6 14l1.5-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.54 6a2 2 0 0 1-1.95 1.5H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H18a2 2 0 0 1 2 2v2"/></svg></span>
+        <span class="g"><b>档案信息待完善 18 人</b><span>缺少继续教育学分记录或证件扫描件</span></span>
+        <a href="staff.html" class="link-btn">处理</a></div>
+      <div class="list-line"><span style="width:30px;height:30px;border-radius:4px;background:var(--blue-50);color:var(--blue-600);display:grid;place-items:center"><svg class="ico ico-14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6m3-3h-6"/></g></svg></span>
+        <span class="g"><b>新入职护士建档待审核 3 人</b><span>护理部待审核，最长已等待 2 天</span></span>
+        <a href="staff.html" class="link-btn">处理</a></div>
+      <div class="list-line"><span style="width:30px;height:30px;border-radius:4px;background:var(--green-bg);color:var(--green);display:grid;place-items:center"><svg class="ico ico-14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14l2 2l4-4"/></g></svg></span>
+        <span class="g"><b>2026 年第三季度考核待归档</b><span>14 个护理单元中 11 个已完成结果录入</span></span>
+        <a href="training.html" class="link-btn">处理</a></div>
+    </div>
+  </div>
+  <div class="pop-ft"><a href="alerts.html">查看全部提醒</a></div>
+</div>
+<div class="menu" id="menuUser">
+  <button><svg class="ico ico-14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="10" r="3"/><path d="M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662"/></g></svg> 个人资料</button>
+  <button><svg class="ico ico-14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="16" r="1"/><rect width="18" height="12" x="3" y="10" rx="2"/><path d="M7 10V7a5 5 0 0 1 10 0v3"/></g></svg> 修改密码</button>
+  <button><svg class="ico ico-14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 5H3m9 14H3M14 3v4m2 10v4m5-9h-9m9 7h-5m5-14h-7m-6 5v4m0-2H3"/></svg> 偏好设置</button>
+  <div class="msep"></div>
+  <button class="danger"><svg class="ico ico-14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m16 17l5-5l-5-5m5 5H9m0 9H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/></svg> 退出登录</button>
+</div>
+<aside class="sidebar">
+  <nav class="nav" aria-label="主功能菜单">
+    <a class="nav-item" href="index.html"
+      ><svg class="ico ico nav-ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></g></svg><span>首页</span>
+      </a><div class="nav-group">
+        <div class="nav-item" role="button" tabindex="0" aria-expanded="false">
+          <svg class="ico ico nav-ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M16 3.128a4 4 0 0 1 0 7.744M22 21v-2a4 4 0 0 0-3-3.87"/><circle cx="9" cy="7" r="4"/></g></svg><span>人员信息</span>
+          <svg class="ico ico-14 caret" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m6 9l6 6l6-6"/></svg>
+        </div>
+        <div class="nav-sub"><a href="staff.html">基本信息</a><a href="education.html">教育经历</a><a href="work.html">工作经历</a><a href="appointment.html">任职经历</a><a href="cpe.html">继续教育</a><a href="training.html">培训考核</a><a href="volunteer.html">公益服务</a><a href="contest.html">比赛竞赛</a><a href="academic.html">学术任职</a><a href="research.html">科研成果</a><a href="reward.html">奖惩情况</a><a href="certificate.html">证件上传</a><a href="talent.html">人才库管理</a></div>
+      </div><a class="nav-item active" href="stats.html" aria-current="page"
+      ><svg class="ico ico nav-ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3v16a2 2 0 0 0 2 2h16m-3-4V9m-5 8V5M8 17v-3"/></svg><span>统计查询</span>
+      </a><div class="nav-group">
+        <div class="nav-item" role="button" tabindex="0" aria-expanded="false">
+          <svg class="ico ico nav-ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0a2.34 2.34 0 0 0 3.319 1.915a2.34 2.34 0 0 1 2.33 4.033a2.34 2.34 0 0 0 0 3.831a2.34 2.34 0 0 1-2.33 4.033a2.34 2.34 0 0 0-3.319 1.915a2.34 2.34 0 0 1-4.659 0a2.34 2.34 0 0 0-3.32-1.915a2.34 2.34 0 0 1-2.33-4.033a2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915"/><circle cx="12" cy="12" r="3"/></g></svg><span>系统管理</span>
+          <svg class="ico ico-14 caret" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m6 9l6 6l6-6"/></svg>
+        </div>
+        <div class="nav-sub"><a href="sys-hospital.html">医院管理</a><a href="sys-role.html">角色管理</a><a href="sys-account.html">账户管理</a><a href="sys-dict.html">系统字典</a><a href="sys-dept.html">科室管理</a><a href="sys-notice.html">通知公告</a></div>
+      </div><a class="nav-item" href="logs.html"
+      ><svg class="ico ico nav-ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/><path d="M14 2v5a1 1 0 0 0 1 1h5M10 9H8m8 4H8m8 4H8"/></g></svg><span>日志管理</span>
+      </a>
+  </nav>
+  <div class="side-foot">
+    <div class="row"><span>数据同步时间</span><b>2026-10-11 09:20</b></div>
+    <div class="row"><span>系统版本</span><b>v2.4.1</b></div>
+  </div>
+</aside>
+<main class="app">
+  <div class="page">
+    <div class="crumb">首页<span class="sep">/</span><b>统计查询</b></div>
+    <div class="page-head">
+    <div style="min-width:0">
+      <h1>统计查询<span class="tag tag-line">秒级统计 · 支持导出</span></h1>
+      <div class="sub">支持按统计维度、医院、科室、人员类别、职称、学历、年龄段与时间区间自由组合，生成护理人力资源结构、执业资格与培训、人才与荣誉三类分析报表，结果可直接导出 Excel / PDF 用于等级医院评审与护理质量报告。</div>
+    </div>
+    <div class="page-actions">
+      <button class="btn" data-toast="已保存为我的常用报表模板"><svg class="ico ico-14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 3a2 2 0 0 1 2 2v15a1 1 0 0 1-1.496.868l-4.512-2.578a2 2 0 0 0-1.984 0l-4.512 2.578A1 1 0 0 1 5 20V5a2 2 0 0 1 2-2z"/></svg>保存报表模板</button>
+      <button class="btn" data-toast="已调起打印预览"><svg class="ico ico-14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2M6 9V3a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v6"/><rect width="12" height="8" x="6" y="14" rx="1"/></g></svg>打印</button>
+      <button class="btn btn-primary" data-toast="已生成统计报表并开始下载"><svg class="ico ico-14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12 15V3m9 12v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10l5 5l5-5"/></g></svg>导出报表</button></div>
+  </div>
+    
+<div class="card filter">
+    <div class="card-bd">
+      <div class="filter-grid"><div class="fld"><label>统计维度</label><div class="ctl"><select data-filter="x" data-tg="none" aria-label="统计维度"><option value="">人员结构</option><option>人员结构</option><option>执业资格与培训</option><option>人才与荣誉</option></select></div></div><div class="fld"><label>医院 / 院区</label><div class="ctl"><select data-filter="x2" data-tg="none" aria-label="医院 / 院区"><option value="">主院区</option><option>江城市第一人民医院</option><option>城北分院</option></select></div></div><div class="fld"><label>所属科室</label><div class="ctl"><select data-filter="x3" data-tg="none" aria-label="所属科室"><option value="">全部护理单元</option><option>心血管内科二病区</option><option>心血管内科一病区</option><option>神经内科病区</option><option>呼吸与危重症医学科病区</option><option>消化内科病区</option><option>内分泌科病区</option><option>普通外科病区</option><option>骨科病区</option><option>神经外科病区</option><option>妇产科病区</option><option>儿科病区</option><option>急诊科</option><option>重症医学科（ICU）</option><option>手术室</option><option>护理部</option></select></div></div><div class="fld"><label>人员类别</label><div class="ctl"><select data-filter="x4" data-tg="none" aria-label="人员类别"><option value="">全部类别</option><option>在编护士</option><option>合同制护士</option><option>规培护士</option><option>进修护士</option><option>实习护生</option></select></div></div><div class="fld"><label>职称</label><div class="ctl"><select data-filter="x5" data-tg="none" aria-label="职称"><option value="">全部职称</option><option>主任护师</option><option>副主任护师</option><option>主管护师</option><option>护师</option><option>护士</option></select></div></div><div class="fld"><label>学历</label><div class="ctl"><select data-filter="x6" data-tg="none" aria-label="学历"><option value="">全部学历</option><option>博士研究生</option><option>硕士研究生</option><option>本科</option><option>大专</option><option>中专</option></select></div></div><div class="fld"><label>年龄段</label><div class="ctl"><select data-filter="x7" data-tg="none" aria-label="年龄段"><option value="">不限</option><option>25 岁以下</option><option>25-30 岁</option><option>30-35 岁</option><option>35-40 岁</option><option>40-45 岁</option><option>45 岁以上</option></select></div></div><div class="fld fld-2"><label>统计区间</label><div class="ctl">
+    <div class="date-range">
+      <input type="date" data-range-key="r" data-range-pos="start" data-tg="none" aria-label="统计区间开始日期">
+      <span>至</span>
+      <input type="date" data-range-key="r" data-range-pos="end" data-tg="none" aria-label="统计区间结束日期">
+    </div></div></div></div>
+      
+      <div class="filter-foot">
+        <span></span>
+        <div class="btn-group">
+          <button class="btn btn-primary" data-toast="已按筛选条件查询，命中 {n} 条记录"><svg class="ico ico-14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m21 21l-4.34-4.34"/><circle cx="11" cy="11" r="8"/></g></svg>查询</button>
+          <button class="btn" data-reset data-tg="none"><svg class="ico ico-14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9a9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></g></svg>重置</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="grid g4 mb12">
+  <div class="kpi acc-blue">
+    <div class="kpi-ico "><svg class="ico ico-20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M16 3.128a4 4 0 0 1 0 7.744M22 21v-2a4 4 0 0 0-3-3.87"/><circle cx="9" cy="7" r="4"/></g></svg></div>
+    <div class="kpi-body">
+      <div class="kpi-lab">在册护理人员</div>
+      <div class="kpi-val ">203<small>人</small></div>
+      <div class="kpi-foot">较 2025 年末 +12 人</div>
+    </div></div>
+  <div class="kpi acc-blue">
+    <div class="kpi-ico "><svg class="ico ico-20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m15.477 12.89l1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"/><circle cx="12" cy="8" r="6"/></g></svg></div>
+    <div class="kpi-body">
+      <div class="kpi-lab">高级职称占比</div>
+      <div class="kpi-val ">14.6%</div>
+      <div class="kpi-foot">主任护师 3 人 · 副主任护师 30 人</div>
+    </div></div>
+  <div class="kpi acc-green">
+    <div class="kpi-ico "><svg class="ico ico-20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0zM22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></g></svg></div>
+    <div class="kpi-body">
+      <div class="kpi-lab">本科及以上学历占比</div>
+      <div class="kpi-val ">78.0%</div>
+      <div class="kpi-foot">本科及以上 160 人</div>
+    </div></div>
+  <div class="kpi acc-amber">
+    <div class="kpi-ico amber"><svg class="ico ico-20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14l2 2l4-4"/></g></svg></div>
+    <div class="kpi-body">
+      <div class="kpi-lab">档案完整率</div>
+      <div class="kpi-val is-amber">91.1%</div>
+      <div class="kpi-foot">待完善 58 人</div>
+    </div></div>
+</div>
+
+<div class="grid g12">
+  <div class="c4"><div class="card">
+    <div class="card-hd">
+      <h2>职称结构</h2>
+      <span class="hint">单位：人</span>
+      
+    </div>
+    <div class="card-bd"><div class="donut-wrap">
+    <div class="donut" style="width:168px;height:168px">
+      <svg width="168" height="168" role="img" aria-label="占比图">
+        <circle cx="84" cy="84" r="74" fill="none" stroke="#EEF3F8" stroke-width="20"/><circle cx="84" cy="84" r="74" fill="none" stroke="#0F4C86" stroke-width="20" stroke-dasharray="6.072306589878817 458.8834061414106" stroke-dashoffset="0" transform="rotate(-90 84 84)"/><circle cx="84" cy="84" r="74" fill="none" stroke="#1668B3" stroke-width="20" stroke-dasharray="55.96999283421231 408.9857198970771" stroke-dashoffset="-9.072306589878817" transform="rotate(-90 84 84)"/><circle cx="84" cy="84" r="74" fill="none" stroke="#4D95D0" stroke-width="20" stroke-dasharray="155.7653653228793 309.1903474084101" stroke-dashoffset="-68.04229942409113" transform="rotate(-90 84 84)"/><circle cx="84" cy="84" r="74" fill="none" stroke="#8FBEE4" stroke-width="20" stroke-dasharray="146.6930587330005 318.2626539982889" stroke-dashoffset="-226.80766474697043" transform="rotate(-90 84 84)"/><circle cx="84" cy="84" r="74" fill="none" stroke="#C9E0F2" stroke-width="20" stroke-dasharray="85.45498925131847 379.50072347997093" stroke-dashoffset="-376.50072347997093" transform="rotate(-90 84 84)"/>
+      </svg>
+      <div class="ctr"><b>205</b><span>在册人员</span></div>
+    </div>
+    <div class="mini-stat" style="flex:1">
+      <div class="li">
+        <span class="l"><i style="background:#0F4C86"></i>主任护师</span>
+        <span><b>4</b>人<em>2.0%</em></span>
+      </div><div class="li">
+        <span class="l"><i style="background:#1668B3"></i>副主任护师</span>
+        <span><b>26</b>人<em>12.7%</em></span>
+      </div><div class="li">
+        <span class="l"><i style="background:#4D95D0"></i>主管护师</span>
+        <span><b>70</b>人<em>34.1%</em></span>
+      </div><div class="li">
+        <span class="l"><i style="background:#8FBEE4"></i>护师</span>
+        <span><b>66</b>人<em>32.2%</em></span>
+      </div><div class="li">
+        <span class="l"><i style="background:#C9E0F2"></i>护士</span>
+        <span><b>39</b>人<em>19.0%</em></span>
+      </div>
+    </div></div></div>
+    
+  </div></div>
+  <div class="c4"><div class="card">
+    <div class="card-hd">
+      <h2>学历结构</h2>
+      <span class="hint">单位：人</span>
+      
+    </div>
+    <div class="card-bd"><div class="hb"><div class="hb-row">
+    <span class="lb" title="本科">本科</span>
+    <span class="hb-track"><i class="hb-fill" style="width:100.0%;background:#0F4C86"></i></span>
+    <span class="vl"><b>132</b><span>64.4%</span></span>
+  </div><div class="hb-row">
+    <span class="lb" title="大专">大专</span>
+    <span class="hb-track"><i class="hb-fill" style="width:32.6%;background:#1668B3"></i></span>
+    <span class="vl"><b>43</b><span>21.0%</span></span>
+  </div><div class="hb-row">
+    <span class="lb" title="硕士研究生">硕士研究生</span>
+    <span class="hb-track"><i class="hb-fill" style="width:19.7%;background:#4D95D0"></i></span>
+    <span class="vl"><b>26</b><span>12.7%</span></span>
+  </div><div class="hb-row">
+    <span class="lb" title="博士研究生">博士研究生</span>
+    <span class="hb-track"><i class="hb-fill" style="width:1.5%;background:#8FBEE4"></i></span>
+    <span class="vl"><b>2</b><span>1.0%</span></span>
+  </div><div class="hb-row">
+    <span class="lb" title="中专">中专</span>
+    <span class="hb-track"><i class="hb-fill" style="width:1.5%;background:#C9E0F2"></i></span>
+    <span class="vl"><b>2</b><span>1.0%</span></span>
+  </div></div></div>
+    
+  </div></div>
+  <div class="c4"><div class="card">
+    <div class="card-hd">
+      <h2>护理能级分布</h2>
+      <span class="hint">N0-N4 能级体系</span>
+      
+    </div>
+    <div class="card-bd"><div class="hb"><div class="hb-row">
+    <span class="lb" title="N0 级">N0 级</span>
+    <span class="hb-track"><i class="hb-fill" style="width:36.7%;background:#4D95D0"></i></span>
+    <span class="vl"><b>22</b><span>10.7%</span></span>
+  </div><div class="hb-row">
+    <span class="lb" title="N1 级">N1 级</span>
+    <span class="hb-track"><i class="hb-fill" style="width:81.7%;background:#4D95D0"></i></span>
+    <span class="vl"><b>49</b><span>23.9%</span></span>
+  </div><div class="hb-row">
+    <span class="lb" title="N2 级">N2 级</span>
+    <span class="hb-track"><i class="hb-fill" style="width:100.0%;background:#4D95D0"></i></span>
+    <span class="vl"><b>60</b><span>29.3%</span></span>
+  </div><div class="hb-row">
+    <span class="lb" title="N3 级">N3 级</span>
+    <span class="hb-track"><i class="hb-fill" style="width:91.7%;background:#4D95D0"></i></span>
+    <span class="vl"><b>55</b><span>26.8%</span></span>
+  </div><div class="hb-row">
+    <span class="lb" title="N4 级">N4 级</span>
+    <span class="hb-track"><i class="hb-fill" style="width:31.7%;background:#4D95D0"></i></span>
+    <span class="vl"><b>19</b><span>9.3%</span></span>
+  </div></div></div>
+    
+  </div></div>
+
+  <div class="c6"><div class="card">
+    <div class="card-hd">
+      <h2>年龄结构分布</h2>
+      <span class="hint">单位：人</span>
+      
+    </div>
+    <div class="card-bd"><div class="chart-flex"><div class="axis-y"><span>63</span><span>32</span><span>0</span></div><div style="flex:1"><div class="vb"><div class="vb-col">
+    <div class="vb-bar-wrap"><div class="vb-bar" style="height:26.9%"><span>19</span></div></div>
+    <div class="vb-lab">25 岁以下</div>
+  </div><div class="vb-col">
+    <div class="vb-bar-wrap"><div class="vb-bar alt" style="height:41.1%"><span>29</span></div></div>
+    <div class="vb-lab">25-30 岁</div>
+  </div><div class="vb-col">
+    <div class="vb-bar-wrap"><div class="vb-bar" style="height:42.5%"><span>30</span></div></div>
+    <div class="vb-lab">30-35 岁</div>
+  </div><div class="vb-col">
+    <div class="vb-bar-wrap"><div class="vb-bar alt" style="height:36.8%"><span>26</span></div></div>
+    <div class="vb-lab">35-40 岁</div>
+  </div><div class="vb-col">
+    <div class="vb-bar-wrap"><div class="vb-bar" style="height:53.9%"><span>38</span></div></div>
+    <div class="vb-lab">40-45 岁</div>
+  </div><div class="vb-col">
+    <div class="vb-bar-wrap"><div class="vb-bar alt" style="height:89.3%"><span>63</span></div></div>
+    <div class="vb-lab">45 岁以上</div>
+  </div></div></div></div></div>
+    
+  </div></div>
+  <div class="c6"><div class="card">
+    <div class="card-hd">
+      <h2>工龄结构分布</h2>
+      <span class="hint">按参加工作时间计算，单位：人</span>
+      
+    </div>
+    <div class="card-bd"><div class="chart-flex"><div class="axis-y"><span>70</span><span>35</span><span>0</span></div><div style="flex:1"><div class="vb"><div class="vb-col">
+    <div class="vb-bar-wrap"><div class="vb-bar" style="height:61.2%"><span>48</span></div></div>
+    <div class="vb-lab">5 年以下</div>
+  </div><div class="vb-col">
+    <div class="vb-bar-wrap"><div class="vb-bar alt" style="height:74.0%"><span>58</span></div></div>
+    <div class="vb-lab">5-10 年</div>
+  </div><div class="vb-col">
+    <div class="vb-bar-wrap"><div class="vb-bar" style="height:89.3%"><span>70</span></div></div>
+    <div class="vb-lab">10-20 年</div>
+  </div><div class="vb-col">
+    <div class="vb-bar-wrap"><div class="vb-bar alt" style="height:37.0%"><span>29</span></div></div>
+    <div class="vb-lab">20 年以上</div>
+  </div></div></div></div></div>
+    
+  </div></div>
+
+  <div class="c6"><div class="card">
+    <div class="card-hd">
+      <h2>各护理单元人员配置对比</h2>
+      <span class="hint">单位：人</span>
+      <div class="hd-right"><button class="btn btn-text btn-sm" data-toast="已按床护比排序">按床护比排序</button></div>
+    </div>
+    <div class="card-bd"><div class="hb"><div class="hb-row">
+    <span class="lb" title="急诊科">急诊科</span>
+    <span class="hb-track"><i class="hb-fill" style="width:100.0%;background:#1668B3"></i></span>
+    <span class="vl"><b>21</b><span>10.2%</span></span>
+  </div><div class="hb-row">
+    <span class="lb" title="重症医学科（ICU）">重症医学科（ICU）</span>
+    <span class="hb-track"><i class="hb-fill" style="width:95.2%;background:#1668B3"></i></span>
+    <span class="vl"><b>20</b><span>9.8%</span></span>
+  </div><div class="hb-row">
+    <span class="lb" title="手术室">手术室</span>
+    <span class="hb-track"><i class="hb-fill" style="width:85.7%;background:#1668B3"></i></span>
+    <span class="vl"><b>18</b><span>8.8%</span></span>
+  </div><div class="hb-row">
+    <span class="lb" title="妇产科病区">妇产科病区</span>
+    <span class="hb-track"><i class="hb-fill" style="width:76.2%;background:#4D95D0"></i></span>
+    <span class="vl"><b>16</b><span>7.8%</span></span>
+  </div><div class="hb-row">
+    <span class="lb" title="心血管内科二病区">心血管内科二病区</span>
+    <span class="hb-track"><i class="hb-fill" style="width:71.4%;background:#4D95D0"></i></span>
+    <span class="vl"><b>15</b><span>7.3%</span></span>
+  </div><div class="hb-row">
+    <span class="lb" title="呼吸与危重症医学科病区">呼吸与危重症医学科病区</span>
+    <span class="hb-track"><i class="hb-fill" style="width:71.4%;background:#4D95D0"></i></span>
+    <span class="vl"><b>15</b><span>7.3%</span></span>
+  </div><div class="hb-row">
+    <span class="lb" title="神经内科病区">神经内科病区</span>
+    <span class="hb-track"><i class="hb-fill" style="width:66.7%;background:#4D95D0"></i></span>
+    <span class="vl"><b>14</b><span>6.8%</span></span>
+  </div><div class="hb-row">
+    <span class="lb" title="普通外科病区">普通外科病区</span>
+    <span class="hb-track"><i class="hb-fill" style="width:66.7%;background:#4D95D0"></i></span>
+    <span class="vl"><b>14</b><span>6.8%</span></span>
+  </div><div class="hb-row">
+    <span class="lb" title="儿科病区">儿科病区</span>
+    <span class="hb-track"><i class="hb-fill" style="width:66.7%;background:#4D95D0"></i></span>
+    <span class="vl"><b>14</b><span>6.8%</span></span>
+  </div><div class="hb-row">
+    <span class="lb" title="心血管内科一病区">心血管内科一病区</span>
+    <span class="hb-track"><i class="hb-fill" style="width:57.1%;background:#4D95D0"></i></span>
+    <span class="vl"><b>12</b><span>5.9%</span></span>
+  </div><div class="hb-row">
+    <span class="lb" title="骨科病区">骨科病区</span>
+    <span class="hb-track"><i class="hb-fill" style="width:57.1%;background:#4D95D0"></i></span>
+    <span class="vl"><b>12</b><span>5.9%</span></span>
+  </div><div class="hb-row">
+    <span class="lb" title="消化内科病区">消化内科病区</span>
+    <span class="hb-track"><i class="hb-fill" style="width:47.6%;background:#4D95D0"></i></span>
+    <span class="vl"><b>10</b><span>4.9%</span></span>
+  </div><div class="hb-row">
+    <span class="lb" title="神经外科病区">神经外科病区</span>
+    <span class="hb-track"><i class="hb-fill" style="width:47.6%;background:#4D95D0"></i></span>
+    <span class="vl"><b>10</b><span>4.9%</span></span>
+  </div><div class="hb-row">
+    <span class="lb" title="内分泌科病区">内分泌科病区</span>
+    <span class="hb-track"><i class="hb-fill" style="width:42.9%;background:#4D95D0"></i></span>
+    <span class="vl"><b>9</b><span>4.4%</span></span>
+  </div></div></div>
+    
+  </div></div>
+
+  <div class="c6"><div class="card">
+    <div class="card-hd">
+      <h2>执业资格持证与到期情况</h2>
+      <span class="hint">蓝色为持证总数，橙色为 90 天内到期</span>
+      
+    </div>
+    <div class="card-bd"><div><div class="stack-row">
+      <span class="hb-row" style="display:block;text-align:right;color:var(--t2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">护士执业证书</span>
+      <span class="stack-track"><i style="width:77.6%;background:#4D95D0" title="持证有效 159人"></i><i style="width:22.4%;background:#E0A33C" title="90 天内到期 46人"></i></span>
+      <span style="color:var(--t2);font-size:12px">及格 <b style="color:var(--t1)">159</b> / 205</span>
+    </div><div class="stack-row">
+      <span class="hb-row" style="display:block;text-align:right;color:var(--t2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">专科护士证书</span>
+      <span class="stack-track"><i style="width:89.4%;background:#4D95D0" title="持证有效 101人"></i><i style="width:10.6%;background:#E0A33C" title="90 天内到期 12人"></i></span>
+      <span style="color:var(--t2);font-size:12px">及格 <b style="color:var(--t1)">101</b> / 113</span>
+    </div><div class="stack-row">
+      <span class="hb-row" style="display:block;text-align:right;color:var(--t2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">急救技能证书</span>
+      <span class="stack-track"><i style="width:94.4%;background:#4D95D0" title="持证有效 151人"></i><i style="width:5.6%;background:#E0A33C" title="90 天内到期 9人"></i></span>
+      <span style="color:var(--t2);font-size:12px">及格 <b style="color:var(--t1)">151</b> / 160</span>
+    </div><div class="stack-row">
+      <span class="hb-row" style="display:block;text-align:right;color:var(--t2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">母婴保健技术证书</span>
+      <span class="stack-track"><i style="width:91.2%;background:#4D95D0" title="持证有效 31人"></i><i style="width:8.8%;background:#E0A33C" title="90 天内到期 3人"></i></span>
+      <span style="color:var(--t2);font-size:12px">及格 <b style="color:var(--t1)">31</b> / 34</span>
+    </div><div class="stack-row">
+      <span class="hb-row" style="display:block;text-align:right;color:var(--t2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">学历 / 学位证书</span>
+      <span class="stack-track"><i style="width:100.0%;background:#4D95D0" title="持证有效 205人"></i></span>
+      <span style="color:var(--t2);font-size:12px">及格 <b style="color:var(--t1)">205</b> / 205</span>
+    </div>
+  <div class="stack-legend"><span><i style="background:#4D95D0"></i>持证有效</span><span><i style="background:#E0A33C"></i>90 天内到期</span></div></div>
+      <div class="divider"></div>
+      <div class="stat-inline">
+        <span class="si">专科护士持证率<b>55.1%</b></span>
+        <span class="si">急救技能持证率<b>78.0%</b></span>
+        <span class="si">持证到期待办理<b>43</b> 人</span>
+      </div></div>
+    
+  </div></div>
+
+  <div class="c8"><div class="card">
+    <div class="card-hd">
+      <h2>近 6 年护理人员建档与离职趋势</h2>
+      <span class="hint">单位：人</span>
+      
+    </div>
+    <div class="card-bd"><svg width="100%" viewBox="0 0 720 230" role="img" aria-label="趋势折线图" style="overflow:visible">
+    <defs><linearGradient id="grads2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1668B3" stop-opacity=".28"/><stop offset="100%" stop-color="#1668B3" stop-opacity="0"/>
+    </linearGradient></defs>
+    <line x1="42" y1="18" x2="704" y2="18" stroke="#EDF2F7" stroke-width="1"/>
+      <text x="34" y="22" text-anchor="end" font-size="11" fill="#8395A8">32</text><line x1="42" y1="63.5" x2="704" y2="63.5" stroke="#EDF2F7" stroke-width="1"/>
+      <text x="34" y="67.5" text-anchor="end" font-size="11" fill="#8395A8">24</text><line x1="42" y1="109" x2="704" y2="109" stroke="#EDF2F7" stroke-width="1"/>
+      <text x="34" y="113" text-anchor="end" font-size="11" fill="#8395A8">16</text><line x1="42" y1="154.5" x2="704" y2="154.5" stroke="#EDF2F7" stroke-width="1"/>
+      <text x="34" y="158.5" text-anchor="end" font-size="11" fill="#8395A8">8</text><line x1="42" y1="200" x2="704" y2="200" stroke="#EDF2F7" stroke-width="1"/>
+      <text x="34" y="204" text-anchor="end" font-size="11" fill="#8395A8">0</text><text x="42" y="220" text-anchor="middle" font-size="11" fill="#8395A8">2021 年</text><text x="174.4" y="220" text-anchor="middle" font-size="11" fill="#8395A8">2022 年</text><text x="306.8" y="220" text-anchor="middle" font-size="11" fill="#8395A8">2023 年</text><text x="439.2" y="220" text-anchor="middle" font-size="11" fill="#8395A8">2024 年</text><text x="571.6" y="220" text-anchor="middle" font-size="11" fill="#8395A8">2025 年</text><text x="704" y="220" text-anchor="middle" font-size="11" fill="#8395A8">2026 年</text><path d="M42,109 L174.4,80.5625 L306.8,63.5 L439.2,35.0625 L571.6,52.125 L704,91.9375 L704,200 L42,200 Z" fill="url(#grads2)" opacity=".5"/>
+      <path d="M42,109 L174.4,80.5625 L306.8,63.5 L439.2,35.0625 L571.6,52.125 L704,91.9375" fill="none" stroke="#1668B3" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+      <circle cx="42" cy="109" r="3" fill="#fff" stroke="#1668B3" stroke-width="2"/><circle cx="174.4" cy="80.5625" r="3" fill="#fff" stroke="#1668B3" stroke-width="2"/><circle cx="306.8" cy="63.5" r="3" fill="#fff" stroke="#1668B3" stroke-width="2"/><circle cx="439.2" cy="35.0625" r="3" fill="#fff" stroke="#1668B3" stroke-width="2"/><circle cx="571.6" cy="52.125" r="3" fill="#fff" stroke="#1668B3" stroke-width="2"/><circle cx="704" cy="91.9375" r="3" fill="#fff" stroke="#1668B3" stroke-width="2"/>
+      <path d="M42,165.875 L174.4,160.1875 L306.8,148.8125 L439.2,154.5 L571.6,137.4375 L704,160.1875" fill="none" stroke="#C88A16" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+      <circle cx="42" cy="165.875" r="3" fill="#fff" stroke="#C88A16" stroke-width="2"/><circle cx="174.4" cy="160.1875" r="3" fill="#fff" stroke="#C88A16" stroke-width="2"/><circle cx="306.8" cy="148.8125" r="3" fill="#fff" stroke="#C88A16" stroke-width="2"/><circle cx="439.2" cy="154.5" r="3" fill="#fff" stroke="#C88A16" stroke-width="2"/><circle cx="571.6" cy="137.4375" r="3" fill="#fff" stroke="#C88A16" stroke-width="2"/><circle cx="704" cy="160.1875" r="3" fill="#fff" stroke="#C88A16" stroke-width="2"/>
+  </svg>
+  <div class="stack-legend"><span><i style="background:#1668B3"></i>当年新增建档</span><span><i style="background:#C88A16"></i>当年离职办理</span></div></div>
+    
+  </div></div>
+
+  <div class="c4"><div class="card">
+    <div class="card-hd">
+      <h2>人才库层级分布</h2>
+      <span class="hint">单位：人</span>
+      
+    </div>
+    <div class="card-bd"><div class="donut-wrap">
+    <div class="donut" style="width:168px;height:168px">
+      <svg width="168" height="168" role="img" aria-label="占比图">
+        <circle cx="84" cy="84" r="74" fill="none" stroke="#EEF3F8" stroke-width="20"/><circle cx="84" cy="84" r="74" fill="none" stroke="#6640B6" stroke-width="20" stroke-dasharray="33.32466505713198 431.6310476741574" stroke-dashoffset="0" transform="rotate(-90 84 84)"/><circle cx="84" cy="84" r="74" fill="none" stroke="#0E6E7C" stroke-width="20" stroke-dasharray="113.23892818282235 351.71678454846705" stroke-dashoffset="-36.32466505713198" transform="rotate(-90 84 84)"/><circle cx="84" cy="84" r="74" fill="none" stroke="#1668B3" stroke-width="20" stroke-dasharray="149.56359323995434 315.39211949133505" stroke-dashoffset="-152.56359323995434" transform="rotate(-90 84 84)"/><circle cx="84" cy="84" r="74" fill="none" stroke="#8FBEE4" stroke-width="20" stroke-dasharray="156.82852625138074 308.1271864799087" stroke-dashoffset="-305.1271864799087" transform="rotate(-90 84 84)"/>
+      </svg>
+      <div class="ctr"><b>64</b><span>在库人才</span></div>
+    </div>
+    <div class="mini-stat" style="flex:1">
+      <div class="li">
+        <span class="l"><i style="background:#6640B6"></i>国家级</span>
+        <span><b>5</b>人<em>7.8%</em></span>
+      </div><div class="li">
+        <span class="l"><i style="background:#0E6E7C"></i>省级</span>
+        <span><b>16</b>人<em>25.0%</em></span>
+      </div><div class="li">
+        <span class="l"><i style="background:#1668B3"></i>市级</span>
+        <span><b>21</b>人<em>32.8%</em></span>
+      </div><div class="li">
+        <span class="l"><i style="background:#8FBEE4"></i>院级</span>
+        <span><b>22</b>人<em>34.4%</em></span>
+      </div>
+    </div></div></div>
+    
+  </div></div>
+
+  <div class="c12"><div class="card">
+    <div class="card-hd">
+      <h2>护理单元人员结构明细报表</h2>
+      <span class="hint">统计口径：在册人员 · 数据截止 2026-10-11 09:20</span>
+      <div class="hd-right"><div class="row" style="gap:8px">
+        <button class="btn btn-sm" data-toast="已生成《护理人力资源结构分析报告》PDF"><svg class="ico ico-14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/><path d="M14 2v5a1 1 0 0 0 1 1h5m-8 10v-6m-3 3l3 3l3-3"/></g></svg>导出 PDF 报告</button>
+        <button class="btn btn-sm btn-primary" data-toast="正在导出 Excel 明细（含 15 行科室数据）"><svg class="ico ico-14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12 15V3m9 12v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10l5 5l5-5"/></g></svg>导出 Excel</button>
+      </div></div>
+    </div>
+    <div class="card-bd p0"><div class="tbl-scroll" style="max-height:none"><table class="dt" style="border-top:1px solid var(--line-2)"><thead><tr><th>护理单元</th><th style="width:120px">所属系统</th><th style="width:96px">护士总数</th><th style="width:140px">高级职称</th><th style="width:150px">本科及以上</th><th style="width:104px">专科护士</th><th style="width:130px">90 天内到期</th><th style="width:150px">档案完整度</th><th style="width:102px">开放床位</th><th style="width:92px">床护比</th></tr></thead><tbody><tr><td class=""><span class="strong">心血管内科二病区</span></td><td class="">内科系统</td><td class=""><b class="num">15</b></td><td class="" data-v="2">2 人 <span class="muted">（13%）</span></td><td class="" data-v="11">11 人 <span class="muted">（73%）</span></td><td class="" data-v="7">7 人</td><td class="" data-v="5"><span class="cd cd-30">5 人</span></td><td class="" data-v="53"><div class="pg"><span class="pg-track"><i class="pg-bar bad" style="width:53%"></i></span><span class="pg-val">53%</span></div></td><td class="">46 张</td><td class="">0.33</td></tr><tr><td class=""><span class="strong">心血管内科一病区</span></td><td class="">内科系统</td><td class=""><b class="num">12</b></td><td class="" data-v="2">2 人 <span class="muted">（17%）</span></td><td class="" data-v="9">9 人 <span class="muted">（75%）</span></td><td class="" data-v="6">6 人</td><td class="" data-v="7"><span class="cd cd-30">7 人</span></td><td class="" data-v="58"><div class="pg"><span class="pg-track"><i class="pg-bar bad" style="width:58%"></i></span><span class="pg-val">58%</span></div></td><td class="">42 张</td><td class="">0.29</td></tr><tr><td class=""><span class="strong">神经内科病区</span></td><td class="">内科系统</td><td class=""><b class="num">14</b></td><td class="" data-v="1">1 人 <span class="muted">（7%）</span></td><td class="" data-v="11">11 人 <span class="muted">（79%）</span></td><td class="" data-v="8">8 人</td><td class="" data-v="4"><span class="cd cd-30">4 人</span></td><td class="" data-v="79"><div class="pg"><span class="pg-track"><i class="pg-bar " style="width:79%"></i></span><span class="pg-val">79%</span></div></td><td class="">45 张</td><td class="">0.31</td></tr><tr><td class=""><span class="strong">呼吸与危重症医学科病区</span></td><td class="">内科系统</td><td class=""><b class="num">15</b></td><td class="" data-v="2">2 人 <span class="muted">（13%）</span></td><td class="" data-v="12">12 人 <span class="muted">（80%）</span></td><td class="" data-v="10">10 人</td><td class="" data-v="7"><span class="cd cd-30">7 人</span></td><td class="" data-v="93"><div class="pg"><span class="pg-track"><i class="pg-bar good" style="width:93%"></i></span><span class="pg-val">93%</span></div></td><td class="">48 张</td><td class="">0.31</td></tr><tr><td class=""><span class="strong">消化内科病区</span></td><td class="">内科系统</td><td class=""><b class="num">10</b></td><td class="" data-v="3">3 人 <span class="muted">（30%）</span></td><td class="" data-v="9">9 人 <span class="muted">（90%）</span></td><td class="" data-v="8">8 人</td><td class="" data-v="2"><span class="cd cd-30">2 人</span></td><td class="" data-v="40"><div class="pg"><span class="pg-track"><i class="pg-bar bad" style="width:40%"></i></span><span class="pg-val">40%</span></div></td><td class="">40 张</td><td class="">0.25</td></tr><tr><td class=""><span class="strong">内分泌科病区</span></td><td class="">内科系统</td><td class=""><b class="num">9</b></td><td class="" data-v="4">4 人 <span class="muted">（44%）</span></td><td class="" data-v="7">7 人 <span class="muted">（78%）</span></td><td class="" data-v="5">5 人</td><td class="" data-v="3"><span class="cd cd-30">3 人</span></td><td class="" data-v="56"><div class="pg"><span class="pg-track"><i class="pg-bar bad" style="width:56%"></i></span><span class="pg-val">56%</span></div></td><td class="">38 张</td><td class="">0.24</td></tr><tr><td class=""><span class="strong">普通外科病区</span></td><td class="">外科系统</td><td class=""><b class="num">14</b></td><td class="" data-v="3">3 人 <span class="muted">（21%）</span></td><td class="" data-v="11">11 人 <span class="muted">（79%）</span></td><td class="" data-v="5">5 人</td><td class="" data-v="0"><span class="tag tag-green">无</span></td><td class="" data-v="71"><div class="pg"><span class="pg-track"><i class="pg-bar warn" style="width:71%"></i></span><span class="pg-val">71%</span></div></td><td class="">46 张</td><td class="">0.30</td></tr><tr><td class=""><span class="strong">骨科病区</span></td><td class="">外科系统</td><td class=""><b class="num">12</b></td><td class="" data-v="1">1 人 <span class="muted">（8%）</span></td><td class="" data-v="9">9 人 <span class="muted">（75%）</span></td><td class="" data-v="9">9 人</td><td class="" data-v="3"><span class="cd cd-30">3 人</span></td><td class="" data-v="83"><div class="pg"><span class="pg-track"><i class="pg-bar " style="width:83%"></i></span><span class="pg-val">83%</span></div></td><td class="">44 张</td><td class="">0.27</td></tr><tr><td class=""><span class="strong">神经外科病区</span></td><td class="">外科系统</td><td class=""><b class="num">10</b></td><td class="" data-v="0">0 人 <span class="muted">（0%）</span></td><td class="" data-v="9">9 人 <span class="muted">（90%）</span></td><td class="" data-v="4">4 人</td><td class="" data-v="3"><span class="cd cd-30">3 人</span></td><td class="" data-v="80"><div class="pg"><span class="pg-track"><i class="pg-bar " style="width:80%"></i></span><span class="pg-val">80%</span></div></td><td class="">36 张</td><td class="">0.28</td></tr><tr><td class=""><span class="strong">妇产科病区</span></td><td class="">妇儿系统</td><td class=""><b class="num">16</b></td><td class="" data-v="4">4 人 <span class="muted">（25%）</span></td><td class="" data-v="10">10 人 <span class="muted">（63%）</span></td><td class="" data-v="9">9 人</td><td class="" data-v="4"><span class="cd cd-30">4 人</span></td><td class="" data-v="81"><div class="pg"><span class="pg-track"><i class="pg-bar " style="width:81%"></i></span><span class="pg-val">81%</span></div></td><td class="">48 张</td><td class="">0.33</td></tr><tr><td class=""><span class="strong">儿科病区</span></td><td class="">妇儿系统</td><td class=""><b class="num">14</b></td><td class="" data-v="1">1 人 <span class="muted">（7%）</span></td><td class="" data-v="9">9 人 <span class="muted">（64%）</span></td><td class="" data-v="8">8 人</td><td class="" data-v="0"><span class="tag tag-green">无</span></td><td class="" data-v="79"><div class="pg"><span class="pg-track"><i class="pg-bar " style="width:79%"></i></span><span class="pg-val">79%</span></div></td><td class="">40 张</td><td class="">0.35</td></tr><tr><td class=""><span class="strong">急诊科</span></td><td class="">急危重症系统</td><td class=""><b class="num">21</b></td><td class="" data-v="1">1 人 <span class="muted">（5%）</span></td><td class="" data-v="17">17 人 <span class="muted">（81%）</span></td><td class="" data-v="11">11 人</td><td class="" data-v="4"><span class="cd cd-30">4 人</span></td><td class="" data-v="81"><div class="pg"><span class="pg-track"><i class="pg-bar " style="width:81%"></i></span><span class="pg-val">81%</span></div></td><td class="">32 张</td><td class="">0.66</td></tr><tr><td class=""><span class="strong">重症医学科（ICU）</span></td><td class="">急危重症系统</td><td class=""><b class="num">20</b></td><td class="" data-v="0">0 人 <span class="muted">（0%）</span></td><td class="" data-v="17">17 人 <span class="muted">（85%）</span></td><td class="" data-v="14">14 人</td><td class="" data-v="0"><span class="tag tag-green">无</span></td><td class="" data-v="55"><div class="pg"><span class="pg-track"><i class="pg-bar bad" style="width:55%"></i></span><span class="pg-val">55%</span></div></td><td class="">24 张</td><td class="">0.83</td></tr><tr><td class=""><span class="strong">手术室</span></td><td class="">平台科室</td><td class=""><b class="num">18</b></td><td class="" data-v="2">2 人 <span class="muted">（11%）</span></td><td class="" data-v="14">14 人 <span class="muted">（78%）</span></td><td class="" data-v="9">9 人</td><td class="" data-v="4"><span class="cd cd-30">4 人</span></td><td class="" data-v="72"><div class="pg"><span class="pg-track"><i class="pg-bar warn" style="width:72%"></i></span><span class="pg-val">72%</span></div></td><td class="">—</td><td class="">1.00</td></tr><tr><td class=""><span class="strong">护理部（职能）</span></td><td class="">护理部</td><td class=""><b class="num">5</b></td><td class="" data-v="5">5 人 <span class="muted">（100%）</span></td><td class="" data-v="5">5 人 <span class="muted">（100%）</span></td><td class="" data-v="3">3 人</td><td class="" data-v="0"><span class="tag tag-green">无</span></td><td class="" data-v="100"><div class="pg"><span class="pg-track"><i class="pg-bar good" style="width:100%"></i></span><span class="pg-val">100%</span></div></td><td class="">—</td><td class="">—</td></tr></tbody></table></div></div>
+    
+  </div></div>
+</div>
+  </div>
+</main>
+<div class="mask"></div>
+
+<script src="assets/app.js"></script>
+</body>
+</html>

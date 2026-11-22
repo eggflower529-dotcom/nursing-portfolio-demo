@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>护理人员档案 · 王秀兰 · 护理人员档案管理系统</title>
+<meta name="description" content="护理人员档案管理系统高保真原型 · 护理人员档案 · 王秀兰">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <div class="brand-mark">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M2.5 12h3.2l1.6-4.2 2.4 8.4 1.9-4.2h2.6" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M17.6 9.4v5.2M15 12h5.2" stroke="#8FC6EE" stroke-width="1.9" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="brand-txt"><b>护理人员档案管理系统</b><span>江城市第一人民医院 · 护理部</span></div>
+  </div>
+  <div class="topbar-spacer"></div>
+  <div class="top-actions">
+    <button class="top-btn" onclick="location.href='alerts.html'"><svg class="ico ico-14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m21.73 18l-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3M12 9v4m0 4h.01"/></svg> 证件到期提醒 <span class="badge">17</span></button>
+    <button class="top-ico" data-pop="#popMsg" aria-label="消息通知"><svg class="ico ico-18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.268 21a2 2 0 0 0 3.464 0m-10.47-5.674A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"/></svg><i class="dot"></i></button>
+    <button class="top-ico" title="帮助中心" aria-label="帮助中心"><svg class="ico ico-18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3m.08 4h.01"/></g></svg></button>
+    <span class="top-sep"></span>
+    <button class="user-box" data-menu-open="#menuUser" aria-haspopup="true">
+      <span class="avatar a28">李静</span>
+      <span class="user-meta"><b>李静怡</b><span>护理部 · 系统管理员</span></span>
+      <svg class="ico ico-14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m6 9l6 6l6-6"/></svg>
+    </button>
+  </div>
+</header>
+<div class="pop" id="popMsg" role="dialog" aria-label="消息通知">
+  <div class="pop-hd"><span><svg class="ico ico-14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.268 21a2 2 0 0 0 3.464 0m-10.47-5.674A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"/></svg> 待办与提醒</span><span class="tag tag-red">3 类</span></div>
+  <div class="pop-bd">
+    <div style="padding:12px 14px">
+      <div class="list-line"><span class="tic" style="width:30px;height:30px;border-radius:4px;background:var(--red-bg);color:var(--red);display:grid;place-items:center"><svg class="ico ico-14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m21.73 18l-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3M12 9v4m0 4h.01"/></svg></span>
+        <span class="g"><b>执业证书即将到期 17 人</b><span>其中 4 人已过期，请尽快通知科室办理延续注册</span></span>
+        <a href="alerts.html" class="link-btn">处理</a></div>
+      <div class="list-line"><span style="width:30px;height:30px;border-radius:4px;background:var(--amber-bg);color:var(--amber);display:grid;place-items:center"><svg class="ico ico-14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m6 14l1.5-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.54 6a2 2 0 0 1-1.95 1.5H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H18a2 2 0 0 1 2 2v2"/></svg></span>
+        <span class="g"><b>档案信息待完善 18 人</b><span>缺少继续教育学分记录或证件扫描件</span></span>
+        <a href="staff.html" class="link-btn">处理</a></div>
+      <div class="list-line"><span style="width:30px;height:30px;border-radius:4px;background:var(--blue-50);color:var(--blue-600);display:grid;place-items:center"><svg class="ico ico-14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6m3-3h-6"/></g></svg></span>
+        <span class="g"><b>新入职护士建档待审核 3 人</b><span>护理部待审核，最长已等待 2 天</span></span>
+        <a href="staff.html" class="link-btn">处理</a></div>
+      <div class="list-line"><span style="width:30px;height:30px;border-radius:4px;background:var(--green-bg);color:var(--green);display:grid;place-items:center"><svg class="ico ico-14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14l2 2l4-4"/></g></svg></span>
+        <span class="g"><b>2026 年第三季度考核待归档</b><span>14 个护理单元中 11 个已完成结果录入</span></span>
+        <a href="training.html" class="link-btn">处理</a></div>
+    </div>
+  </div>
+  <div class="pop-ft"><a href="alerts.html">查看全部提醒</a></div>
+</div>
+<div class="menu" id="menuUser">
+  <button><svg class="ico ico-14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="10" r="3"/><path d="M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662"/></g></svg> 个人资料</button>
+  <button><svg class="ico ico-14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="16" r="1"/><rect width="18" height="12" x="3" y="10" rx="2"/><path d="M7 10V7a5 5 0 0 1 10 0v3"/></g></svg> 修改密码</button>
+  <button><svg class="ico ico-14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 5H3m9 14H3M14 3v4m2 10v4m5-9h-9m9 7h-5m5-14h-7m-6 5v4m0-2H3"/></svg> 偏好设置</button>
+  <div class="msep"></div>
+  <button class="danger"><svg class="ico ico-14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m16 17l5-5l-5-5m5 5H9m0 9H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/></svg> 退出登录</button>
+</div>
+<aside class="sidebar">
+  <nav class="nav" aria-label="主功能菜单">
+    <a class="nav-item" href="index.html"
+      ><svg class="ico ico nav-ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></g></svg><span>首页</span>
+      </a><div class="nav-group open">
+        <div class="nav-item" role="button" tabindex="0" aria-expanded="true">
+          <svg class="ico ico nav-ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M16 3.128a4 4 0 0 1 0 7.744M22 21v-2a4 4 0 0 0-3-3.87"/><circle cx="9" cy="7" r="4"/></g></svg><span>人员信息</span>
+          <svg class="ico ico-14 caret" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m6 9l6 6l6-6"/></svg>
+        </div>
+        <div class="nav-sub"><a href="staff.html" class="active">基本信息</a><a href="education.html">教育经历</a><a href="work.html">工作经历</a><a href="appointment.html">任职经历</a><a href="cpe.html">继续教育</a><a href="training.html">培训考核</a><a href="volunteer.html">公益服务</a><a href="contest.html">比赛竞赛</a><a href="academic.html">学术任职</a><a href="research.html">科研成果</a><a href="reward.html">奖惩情况</a><a href="certificate.html">证件上传</a><a href="talent.html">人才库管理</a></div>
+      </div><a class="nav-item" href="stats.html"
+      ><svg class="ico ico nav-ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3v16a2 2 0 0 0 2 2h16m-3-4V9m-5 8V5M8 17v-3"/></svg><span>统计查询</span>
+      </a><div class="nav-group">
+        <div class="nav-item" role="button" tabindex="0" aria-expanded="false">
+          <svg class="ico ico nav-ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0a2.34 2.34 0 0 0 3.319 1.915a2.34 2.34 0 0 1 2.33 4.033a2.34 2.34 0 0 0 0 3.831a2.34 2.34 0 0 1-2.33 4.033a2.34 2.34 0 0 0-3.319 1.915a2.34 2.34 0 0 1-4.659 0a2.34 2.34 0 0 0-3.32-1.915a2.34 2.34 0 0 1-2.33-4.033a2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915"/><circle cx="12" cy="12" r="3"/></g></svg><span>系统管理</span>
+          <svg class="ico ico-14 caret" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m6 9l6 6l6-6"/></svg>
+        </div>
+        <div class="nav-sub"><a href="sys-hospital.html">医院管理</a><a href="sys-role.html">角色管理</a><a href="sys-account.html">账户管理</a><a href="sys-dict.html">系统字典</a><a href="sys-dept.html">科室管理</a><a href="sys-notice.html">通知公告</a></div>
+      </div><a class="nav-item" href="logs.html"
+      ><svg class="ico ico nav-ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/><path d="M14 2v5a1 1 0 0 0 1 1h5M10 9H8m8 4H8m8 4H8"/></g></svg><span>日志管理</span>
+      </a>
+  </nav>
+  <div class="side-foot">
+    <div class="row"><span>数据同步时间</span><b>2026-10-11 09:20</b></div>
+    <div class="row"><span>系统版本</span><b>v2.4.1</b></div>
+  </div>
+</aside>
+<main class="app">
+  <div class="page">
+    <div class="crumb">首页<span class="sep">/</span>人员信息<span class="sep">/</span>基本信息<span class="sep">/</span><b>王秀兰 · 个人档案</b></div>
+    <div class="page-head">
+    <div style="min-width:0">
+      <h1>护理人员档案 · 王秀兰<span class="tag tag-green"><i class="d"></i>已审核</span><span class="tag">档案完整度 94%</span></h1>
+      
+    </div>
+    <div class="page-actions">
+      <a class="btn" href="staff.html"><svg class="ico ico-14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m15 18l-6-6l6-6"/></svg>返回列表</a>
+      <button class="btn" data-toast="已调起打印预览，将输出《护理人员档案（王秀兰）》"><svg class="ico ico-14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2M6 9V3a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v6"/><rect width="12" height="8" x="6" y="14" rx="1"/></g></svg>打印档案</button>
+      <button class="btn" data-toast="正在生成《护理人员档案（王秀兰）》PDF 文件"><svg class="ico ico-14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/><path d="M14 2v5a1 1 0 0 0 1 1h5m-8 10v-6m-3 3l3 3l3-3"/></g></svg>导出档案 PDF</button>
+      <button class="btn" data-toast="已向本人及病区护士长发送续证提醒"><svg class="ico ico-14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11zm7.318-19.539l-10.94 10.939"/></svg>发起续证提醒</button>
+      <button class="btn btn-primary" data-modal-open="#mEdit"><svg class="ico ico-14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.375 2.625a1 1 0 0 1 3 3l-9.013 9.014a2 2 0 0 1-.853.505l-2.873.84a.5.5 0 0 1-.62-.62l.84-2.873a2 2 0 0 1 .506-.852z"/></g></svg>编辑档案</button></div>
+  </div>
+    
+<div class="card">
+    <div class="card-hd">
+      
+      
+      
+    </div>
+    <div class="card-bd"><div class="profile">
+      <span class="avatar a64">王秀</span>
+      <div class="profile-main">
+        <div class="profile-name">
+          <h2>王秀兰</h2>
+          <span class="tag">女 · 38 岁</span><span class="tag">主管护师</span><span class="tag">病区护士长</span><span class="tag">N3</span><span class="tag tag-green">在编护士</span><span class="tag tag-green"><i class="d"></i>在岗</span><span class="tag tag-purple">院级骨干人才</span>
+        </div>
+        <div class="profile-meta">
+          <span><i>工号</i><b class="num">HL2010058</b></span>
+          <span><i>所属科室</i><b>心血管内科二病区（内科系统）</b></span>
+          <span><i>参加工作时间</i><b class="num">2010-07-01</b></span>
+          <span><i>院龄</i><b>16 年 2 个月</b></span>
+          <span><i>护士执业证书</i><b class="num">202600372041</b></span>
+          <span><i>联系电话</i><b class="num">13851732660</b></span>
+          <span><i>专科资质</i><b>心血管专科护士</b></span>
+        </div>
+        <div class="complete-bar">
+          <span class="fs13 fw6">档案完整度</span>
+          <div class="pg"><span class="pg-track"><i class="pg-bar good" style="width:94%"></i></span><span class="pg-val">94%</span></div>
+          <span class="miss">缺失项：<span class="tag tag-amber">学位证书（待补传）</span><span class="tag tag-amber">2026 年度学分明细（待审核）</span></span>
+          <button class="btn btn-sm" data-toast="已向本人推送档案补全清单"><svg class="ico ico-14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11zm7.318-19.539l-10.94 10.939"/></svg>推送补全清单</button>
+        </div>
+      </div>
+      <div class="profile-side">
+        <div class="row-between mb8"><span class="fs13 fw6">执业证书到期提醒</span><span class="cd cd-30"><svg class="ico ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></g></svg>剩 25 天</span></div>
+        <div class="side-note">护士执业证书有效期至 <b class="num">2026-11-05</b>，请于到期前完成延续注册。系统已按「180 / 90 / 30 天」三级规则推送提醒。</div>
+        <div class="row mt12" style="gap:8px">
+          <button class="btn btn-sm btn-primary" data-toast="已发送续证提醒"><svg class="ico ico-14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11zm7.318-19.539l-10.94 10.939"/></svg>立即提醒</button>
+          <button class="btn btn-sm" data-modal-open="#mRenew">登记续期</button>
+          <a class="btn btn-sm btn-text" href="alerts.html">到期台账</a>
+        </div>
+      </div>
+    </div></div>
+    
+  </div>
+<div class="two-col">
+  <div class="card" data-tabbox>
+    <div class="tabs" style="padding:0 12px"><button class="tab on" data-tab="p1" aria-selected="true">基本信息</button><button class="tab" data-tab="p2" aria-selected="false">教育经历<span class="n">3</span></button><button class="tab" data-tab="p3" aria-selected="false">工作经历<span class="n">3</span></button><button class="tab" data-tab="p4" aria-selected="false">任职经历<span class="n">3</span></button><button class="tab" data-tab="p5" aria-selected="false">继续教育<span class="n">5</span></button><button class="tab" data-tab="p6" aria-selected="false">培训考核<span class="n">5</span></button><button class="tab" data-tab="p7" aria-selected="false">公益服务<span class="n">3</span></button><button class="tab" data-tab="p8" aria-selected="false">比赛竞赛<span class="n">4</span></button><button class="tab" data-tab="p9" aria-selected="false">学术任职<span class="n">2</span></button><button class="tab" data-tab="p10" aria-selected="false">科研成果<span class="n">4</span></button><button class="tab" data-tab="p11" aria-selected="false">奖惩情况<span class="n">4</span></button><button class="tab" data-tab="p12" aria-selected="false">证件材料<span class="n">14</span></button></div>
+    <div class="tab-inner" style="padding:0">
+      
+<div class="tab-panel on" data-panel="p1">
+  <div class="dl-sec">个人基本信息</div>
+  <div class="dl "><div><span class="k w">姓名</span><span class="v">王秀兰</span></div><div><span class="k">性别</span><span class="v">女</span></div><div><span class="k">出生日期</span><span class="v"><span class="num">1988-03-12</span></span></div><div><span class="k">年龄</span><span class="v">38 岁</span></div><div><span class="k">民族</span><span class="v">汉族</span></div><div><span class="k">政治面貌</span><span class="v">中共党员</span></div><div><span class="k">婚姻状况</span><span class="v">已婚</span></div><div><span class="k">籍贯</span><span class="v">江苏省江城市</span></div><div><span class="k">身份证号</span><span class="v"><span class="num">320103198803120624</span></span></div><div><span class="k">联系电话</span><span class="v"><span class="num">13851732660</span></span></div><div><span class="k">电子邮箱</span><span class="v">wangxl@jcsdyrmyy.cn</span></div><div><span class="k">紧急联系人</span><span class="v">张建国（配偶）<span class="num"> 13905181234</span></span></div></div>
+  <div class="dl two"><div><span class="k">现居住地址</span><span class="v">江苏省江城市鼓楼区解放北路 128 号 3 幢 502 室</span></div><div><span class="k">户籍地址</span><span class="v">江苏省江城市鼓楼区解放北路 128 号</span></div></div>
+  <div class="dl-sec">工作与岗位信息</div>
+  <div class="dl "><div><span class="k w">工号</span><span class="v"><span class="num">HL2010058</span></span></div><div><span class="k">所属医院</span><span class="v">江城市第一人民医院</span></div><div><span class="k">所属系统</span><span class="v">内科系统</span></div><div><span class="k">所属护理单元</span><span class="v">心血管内科二病区</span></div><div><span class="k">人员类别</span><span class="v">在编护士</span></div><div><span class="k">编制类型</span><span class="v">事业编制（在编）</span></div><div><span class="k">职称</span><span class="v">主管护师</span></div><div><span class="k">职称取得时间</span><span class="v"><span class="num">2018-06-20</span></span></div><div><span class="k">职务</span><span class="v">病区护士长</span></div><div><span class="k">护理能级</span><span class="v">N3（骨干 / 专科护士）</span></div><div><span class="k">专业组</span><span class="v">心血管专科护理组</span></div><div><span class="k">参加工作时间</span><span class="v"><span class="num">2010-07-01</span></span></div><div><span class="k">入职时间</span><span class="v"><span class="num">2010-08-16</span></span></div><div><span class="k">院龄</span><span class="v">16 年 2 个月</span></div><div><span class="k">在岗状态</span><span class="v">在岗</span></div><div><span class="k">用工形式</span><span class="v">长期聘用</span></div><div><span class="k">劳动合同期限</span><span class="v"><span class="num">2020-01-01 至 2028-12-31</span></span></div><div><span class="k">直接上级</span><span class="v">陈晓红（科护士长·内科系统）</span></div></div>
+  <div class="dl-sec">执业资格与人才信息</div>
+  <div class="dl "><div><span class="k w">护士执业证书编号</span><span class="v"><span class="num">202600372041</span></span></div><div><span class="k">首次注册日期</span><span class="v"><span class="num">2011-11-05</span></span></div><div><span class="k">当前注册有效期</span><span class="v"><span class="num">2021-11-05 至 2026-11-05</span></span></div><div><span class="k">剩余天数</span><span class="v"><span class="text-red fw6"><span class="cd cd-30"><svg class="ico ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></g></svg>剩 25 天</span></span></span></div><div><span class="k">专科护士资质</span><span class="v">心血管专科护士（2023 年取得）</span></div><div><span class="k">人才库层级</span><span class="v">院级骨干人才（2024 年入选）</span></div><div><span class="k">现任学术任职</span><span class="v">江苏省护理学会心血管护理专业委员会委员</span></div><div><span class="k">近三年考核</span><span class="v">2023 优秀 / 2024 合格 / 2025 优秀</span></div></div>
+  <div class="mt12"><div class="notice"><svg class="ico ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3m.08 4h.01"/></g></svg><div>档案信息由<b>本人提交 → 病区护士长初审 → 护理部复核</b>三级流程维护，重要字段（姓名、身份证号、工号、执业证书编号）变更需护理部与人事科双重确认，变更历史全程留痕。</div></div></div>
+</div>
+
+<div class="tab-panel" data-panel="p2">
+  <div class="row-between mb12"><div class="hr-title" style="margin:0">教育经历（3 条）</div>
+    <button class="btn btn-sm" data-toast="新增一条教育经历（原型演示）"><svg class="ico ico-14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7-7v14"/></svg>新增教育经历</button></div>
+  <div class="tbl-scroll" style="max-height:none"><table class="dt" style="border-top:1px solid var(--line-2)"><thead><tr><th style="width:176px">起止时间</th><th>毕业院校</th><th style="width:110px">所学专业</th><th style="width:82px">学历</th><th style="width:118px">学位</th><th style="width:96px">学习形式</th><th style="width:150px">毕业证编号</th><th style="width:96px">证书附件</th></tr></thead><tbody><tr><td class="" data-v="2021"><span class="num nowrap">2018-09 至 2021-01</span></td><td class="">江苏大学医学院</td><td class="">护理学</td><td class="">本科</td><td class="">无（成人本科）</td><td class="">成人教育</td><td class=""><span class="num">10304202101188</span></td><td class=""><span class="tag tag-green"><i class="d"></i>已上传</span></td></tr><tr><td class="" data-v="2010"><span class="num nowrap">2007-03 至 2010-01</span></td><td class="">南京医科大学康达学院</td><td class="">护理学</td><td class="">大专</td><td class="">—</td><td class="">成人教育</td><td class=""><span class="num">10304201001136</span></td><td class=""><span class="tag tag-green"><i class="d"></i>已上传</span></td></tr><tr><td class="" data-v="2006"><span class="num nowrap">2003-09 至 2006-06</span></td><td class="">江苏联合职业技术学院</td><td class="">护理</td><td class="">中专</td><td class="">—</td><td class="">全日制</td><td class=""><span class="num">20060311045</span></td><td class=""><span class="tag tag-green"><i class="d"></i>已上传</span></td></tr></tbody></table></div>
+  <div class="mt12"><div class="notice"><svg class="ico ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3m.08 4h.01"/></g></svg><div>最高学历以「学历证书 + 学信网在线验证报告」为准；成人教育、自考学历需同时上传学历认证材料。</div></div></div>
+</div>
+
+<div class="tab-panel" data-panel="p3">
+  <div class="row-between mb12"><div class="hr-title" style="margin:0">工作经历（3 条）</div>
+    <button class="btn btn-sm" data-toast="新增一条工作经历（原型演示）"><svg class="ico ico-14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7-7v14"/></svg>新增工作经历</button></div>
+  <div class="tl">
+    <div class="tl-item now">
+      <div class="tl-hd"><b>[object Object]</b><span class="tl-time num">2018-07 至今</span><span class="tag tag-green"><i class="d"></i>在职</span></div>
+      <div class="tl-bd">[object Object] · [object Object] · 当时职称：[object Object]<br>主要工作内容：[object Object]</div>
+    </div><div class="tl-item">
+      <div class="tl-hd"><b>[object Object]</b><span class="tl-time num">2013-08 至 2018-06</span><span class="tag tag-gray">岗位调动</span></div>
+      <div class="tl-bd">[object Object] · [object Object] · 当时职称：[object Object]<br>主要工作内容：[object Object]</div>
+    </div><div class="tl-item">
+      <div class="tl-hd"><b>[object Object]</b><span class="tl-time num">2010-08 至 2013-07</span><span class="tag tag-green"><i class="d"></i>在职</span></div>
+      <div class="tl-bd">[object Object] · [object Object] · 当时职称：[object Object]<br>主要工作内容：[object Object]</div>
+    </div>
+  </div>
+  <div class="divider"></div>
+  <div class="tbl-scroll" style="max-height:none"><table class="dt" style="border-top:1px solid var(--line-2)"><thead><tr><th style="width:160px">起止时间</th><th>工作单位</th><th style="width:176px">科室 / 部门</th><th style="width:160px">从事岗位</th><th style="width:104px">当时职称</th><th style="width:104px">在职状态</th><th style="width:300px">主要工作内容</th></tr></thead><tbody><tr><td class=""><span class="strong">2018-07 至今</span></td><td class="">江城市第一人民医院</td><td class="">心血管内科二病区</td><td class="">病区护士长</td><td class="">主管护师</td><td class=""><span class="tag tag-green"><i class="d"></i>在职</span></td><td class="">病区护理管理、护理质量与安全管理、临床带教</td></tr><tr><td class=""><span class="num">2013-08 至 2018-06</span></td><td class="">江城市第一人民医院</td><td class="">心血管内科一病区</td><td class="">责任护士 / 护理组长</td><td class="">护师</td><td class=""><span class="tag tag-gray">岗位调动</span></td><td class="">心血管介入术后护理、危重患者护理</td></tr><tr><td class=""><span class="num">2010-08 至 2013-07</span></td><td class="">江城市第一人民医院</td><td class="">心血管内科</td><td class="">临床护士</td><td class="">护士</td><td class=""><span class="tag tag-green"><i class="d"></i>在职</span></td><td class="">心血管内科基础护理、健康宣教</td></tr></tbody></table></div>
+</div>
+
+<div class="tab-panel" data-panel="p4">
+  <div class="row-between mb12"><div class="hr-title" style="margin:0">任职经历（3 条）</div>
+    <button class="btn btn-sm" data-toast="新增一条任职经历（原型演示）"><svg class="ico ico-14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7-7v14"/></svg>新增任职经历</button></div>
+  <div class="tbl-scroll" style="max-height:none"><table class="dt" style="border-top:1px solid var(--line-2)"><thead><tr><th style="width:140px">聘任日期</th><th style="width:220px">任职职务</th><th style="width:200px">任职科室 / 部门</th><th style="width:240px">聘任文号</th><th style="width:110px">任职状态</th></tr></thead><tbody><tr><td class=""><span class="num">2021-03-01</span></td><td class="">心血管专科护理小组组长</td><td class="">护理部</td><td class=""><span class="num">江城一院护〔2021〕21号</span></td><td class=""><span class="tag tag-green"><i class="d"></i>现任</span></td></tr><tr><td class=""><span class="num">2018-07-01</span></td><td class="">病区护士长</td><td class="">心血管内科二病区</td><td class=""><span class="num">江城一院人〔2018〕37号</span></td><td class=""><span class="tag tag-green"><i class="d"></i>现任</span></td></tr><tr><td class=""><span class="num">2016-01-01</span></td><td class="">护理组长</td><td class="">心血管内科一病区</td><td class=""><span class="num">江城一院人〔2016〕12号</span></td><td class=""><span class="tag tag-gray"><i class="d"></i>已免职</span></td></tr></tbody></table></div>
+  <div class="mt12"><div class="notice"><svg class="ico ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3m.08 4h.01"/></g></svg><div>任职经历以医院聘任文件为准，职务变更时由人事科在 5 个工作日内完成档案更新，历史任职记录保留可追溯。</div></div></div>
+</div>
+
+<div class="tab-panel" data-panel="p5">
+  <div class="stat-strip">
+    <div class="si"><span>2026 年度已获学分</span><b>20 <small>分</small></b></div>
+    <div class="si"><span>Ⅰ类学分（要求 ≥ 6 分）</span><b>18 <small>分</small></b></div>
+    <div class="si"><span>Ⅱ类学分</span><b>6 <small>分</small></b></div>
+    <div class="si"><span>年度达标状态</span><b style="color:#157A45">已达标</b></div>
+    <div class="si"><span>待认定记录</span><b style="color:#A2680A">1 <small>条</small></b></div>
+  </div>
+  <div class="row-between mb12"><div class="hr-title" style="margin:0">继续教育记录（5 条）</div>
+    <div class="row" style="gap:8px">
+      <button class="btn btn-sm" data-toast="已导出该人员继续教育学分明细"><svg class="ico ico-14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12 15V3m9 12v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10l5 5l5-5"/></g></svg>导出学分明细</button>
+      <button class="btn btn-sm btn-primary" data-toast="已提交学分认定申请，等待护理部审核"><svg class="ico ico-14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7-7v14"/></svg>录入学分</button></div></div>
+  <div class="tbl-scroll" style="max-height:none"><table class="dt" style="border-top:1px solid var(--line-2)"><thead><tr><th style="width:76px">年度</th><th>项目名称</th><th style="width:92px">级别</th><th style="width:196px">主办单位</th><th style="width:124px">学习形式</th><th style="width:84px">学时</th><th style="width:80px">学分</th><th style="width:96px">学分类型</th><th style="width:100px">认定状态</th></tr></thead><tbody><tr><td class=""><span class="num">2026</span></td><td class="">危重症患者气道管理与呼吸治疗新进展</td><td class=""><span class="tag tag-purple">国家级</span></td><td class="">中华护理学会</td><td class="">线下集中面授</td><td class=""><span class="num">16</span> 学时</td><td class=""><b class="num">6</b> 分</td><td class="">Ⅰ类学分</td><td class=""><span class="tag tag-green"><i class="d"></i>已认定</span></td></tr><tr><td class=""><span class="num">2025</span></td><td class="">静脉治疗专科护士培训班</td><td class=""><span class="tag tag-cyan">省级</span></td><td class="">江苏省护理学会</td><td class="">工作坊 / 实操</td><td class=""><span class="num">24</span> 学时</td><td class=""><b class="num">12</b> 分</td><td class="">Ⅰ类学分</td><td class=""><span class="tag tag-green"><i class="d"></i>已认定</span></td></tr><tr><td class=""><span class="num">2025</span></td><td class="">静脉血栓栓塞症防治护理新进展</td><td class=""><span class="tag">市级</span></td><td class="">江城市护理学会</td><td class="">学术会议</td><td class=""><span class="num">8</span> 学时</td><td class=""><b class="num">4</b> 分</td><td class="">Ⅱ类学分</td><td class=""><span class="tag tag-green"><i class="d"></i>已认定</span></td></tr><tr><td class=""><span class="num">2024</span></td><td class="">护理科研设计与论文写作</td><td class=""><span class="tag tag-cyan">省级</span></td><td class="">江苏省护理学会</td><td class="">线上直播</td><td class=""><span class="num">12</span> 学时</td><td class=""><b class="num">6</b> 分</td><td class="">Ⅰ类学分</td><td class=""><span class="tag tag-green"><i class="d"></i>已认定</span></td></tr><tr><td class=""><span class="num">2026</span></td><td class="">急救技能规范化培训与复训</td><td class=""><span class="tag tag-gray">院级</span></td><td class="">江城市第一人民医院护理部</td><td class="">工作坊 / 实操</td><td class=""><span class="num">6</span> 学时</td><td class=""><b class="num">2</b> 分</td><td class="">Ⅱ类学分</td><td class=""><span class="tag tag-amber"><i class="d"></i>待认定</span></td></tr></tbody></table></div>
+</div>
+
+<div class="tab-panel" data-panel="p6">
+  <div class="stat-strip">
+    <div class="si"><span>2026 年度培训学时</span><b>38 <small>学时</small></b></div>
+    <div class="si"><span>考核平均分</span><b>90.3 <small>分</small></b></div>
+    <div class="si"><span>优秀次数</span><b>2 <small>次</small></b></div>
+    <div class="si"><span>不合格补考</span><b>0 <small>次</small></b></div>
+    <div class="si"><span>最近考核</span><b class="num">2026-09-18</b></div>
+  </div>
+  <div class="row-between mb12"><div class="hr-title" style="margin:0">培训考核记录（5 条）</div>
+    <button class="btn btn-sm" data-toast="已打开培训考核结果录入表单"><svg class="ico ico-14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7-7v14"/></svg>录入考核结果</button></div>
+  <div class="tbl-scroll" style="max-height:none"><table class="dt" style="border-top:1px solid var(--line-2)"><thead><tr><th style="width:140px">培训日期</th><th>培训 / 考核名称</th><th style="width:116px">培训类别</th><th style="width:190px">组织部门</th><th style="width:110px">成绩</th><th style="width:110px">考核结果</th><th style="width:120px">考核方式</th></tr></thead><tbody><tr><td class=""><span class="num">2026-09-18</span></td><td class="">三基三严理论考试（第三季度）</td><td class=""><span class="tag">理论考核</span></td><td class="">护理部</td><td class=""><span class="num">92</span> 分</td><td class=""><span class="tag tag-green"><i class="d"></i>优秀</span></td><td class="">闭卷笔试</td></tr><tr><td class=""><span class="num">2026-05-20</span></td><td class="">心肺复苏（CPR）操作考核</td><td class=""><span class="tag tag-cyan">操作考核</span></td><td class="">护理部</td><td class=""><span class="num">95</span> 分</td><td class=""><span class="tag tag-green"><i class="d"></i>优秀</span></td><td class="">实操评分</td></tr><tr><td class=""><span class="num">2026-03-12</span></td><td class="">护理文书书写规范专项培训</td><td class=""><span class="tag">规范培训</span></td><td class="">护理质量管理委员会</td><td class=""><span class="num">86</span> 分</td><td class=""><span class="tag"><i class="d"></i>合格</span></td><td class="">闭卷笔试</td></tr><tr><td class=""><span class="num">2025-11-08</span></td><td class="">危重患者院内转运应急演练</td><td class=""><span class="tag tag-amber">应急演练</span></td><td class="">医务部</td><td class=""><span class="num">良好</span></td><td class=""><span class="tag"><i class="d"></i>合格</span></td><td class="">情景模拟</td></tr><tr><td class=""><span class="num">2025-08-15</span></td><td class="">静脉治疗规范与导管维护</td><td class=""><span class="tag tag-cyan">操作考核</span></td><td class="">各护理单元</td><td class=""><span class="num">88</span> 分</td><td class=""><span class="tag"><i class="d"></i>合格</span></td><td class="">实操评分</td></tr></tbody></table></div>
+</div>
+
+<div class="tab-panel" data-panel="p7">
+  <div class="stat-strip">
+    <div class="si"><span>累计公益服务时长</span><b>26 <small>小时</small></b></div>
+    <div class="si"><span>参与活动次数</span><b>3 <small>次</small></b></div>
+    <div class="si"><span>最近参与</span><b class="num">2026-05-12</b></div>
+    <div class="si"><span>担任带队 / 主讲</span><b>2 <small>次</small></b></div>
+  </div>
+  <div class="row-between mb12"><div class="hr-title" style="margin:0">公益服务记录（3 条）</div>
+    <button class="btn btn-sm" data-toast="新增一条公益服务记录（原型演示）"><svg class="ico ico-14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7-7v14"/></svg>新增记录</button></div>
+  <div class="tbl-scroll" style="max-height:none"><table class="dt" style="border-top:1px solid var(--line-2)"><thead><tr><th style="width:140px">服务日期</th><th>活动名称</th><th style="width:116px">活动类型</th><th style="width:230px">组织单位</th><th style="width:200px">服务地点</th><th style="width:110px">服务时长</th><th style="width:120px">担任角色</th></tr></thead><tbody><tr><td class=""><span class="num">2026-05-12</span></td><td class="">“5·12”护士节大型健康宣教</td><td class=""><span class="tag">健康宣教</span></td><td class="">江城市第一人民医院护理部</td><td class="">江城中心广场</td><td class=""><span class="num">8</span> 小时</td><td class="">主讲人</td></tr><tr><td class=""><span class="num">2025-10-18</span></td><td class="">社区慢病义诊与健康咨询</td><td class=""><span class="tag">义诊</span></td><td class="">江城市护理学会</td><td class="">城南街道社区服务中心</td><td class=""><span class="num">6</span> 小时</td><td class="">志愿者</td></tr><tr><td class=""><span class="num">2024-07-06</span></td><td class="">老年公寓康养帮扶</td><td class=""><span class="tag">志愿服务</span></td><td class="">院团委</td><td class="">和悦老年公寓</td><td class=""><span class="num">12</span> 小时</td><td class="">带队负责人</td></tr></tbody></table></div>
+</div>
+
+<div class="tab-panel" data-panel="p8">
+  <div class="row-between mb12"><div class="hr-title" style="margin:0">比赛竞赛记录（4 条）</div>
+    <button class="btn btn-sm" data-toast="新增一条竞赛获奖记录（原型演示）"><svg class="ico ico-14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7-7v14"/></svg>新增记录</button></div>
+  <div class="tbl-scroll" style="max-height:none"><table class="dt" style="border-top:1px solid var(--line-2)"><thead><tr><th style="width:110px">获奖时间</th><th>竞赛名称</th><th style="width:104px">竞赛级别</th><th style="width:110px">获奖等次</th><th style="width:92px">名次</th><th style="width:220px">主办单位</th><th style="width:96px">证书</th></tr></thead><tbody><tr><td class=""><span class="num">2024-09</span></td><td class="">江苏省护理技能大赛（危重症组）</td><td class=""><span class="tag tag-cyan">省级</span></td><td class=""><span class="tag tag-amber">二等奖</span></td><td class="">第 3 名</td><td class="">江苏省护理学会</td><td class=""><span class="tag tag-green"><i class="d"></i>已上传</span></td></tr><tr><td class=""><span class="num">2023-05</span></td><td class="">院级护理操作技术比武</td><td class=""><span class="tag tag-gray">院级</span></td><td class=""><span class="tag tag-red">一等奖</span></td><td class="">第 1 名</td><td class="">江城市第一人民医院</td><td class=""><span class="tag tag-green"><i class="d"></i>已上传</span></td></tr><tr><td class=""><span class="num">2022-06</span></td><td class="">江城市医护技能操作竞赛</td><td class=""><span class="tag">市级</span></td><td class=""><span class="tag tag-green">三等奖</span></td><td class="">第 6 名</td><td class="">江城市卫生健康委</td><td class=""><span class="tag tag-green"><i class="d"></i>已上传</span></td></tr><tr><td class=""><span class="num">2021-05</span></td><td class="">“5·12”护理技能竞赛</td><td class=""><span class="tag tag-gray">院级</span></td><td class=""><span class="tag tag-amber">二等奖</span></td><td class="">第 2 名</td><td class="">江城市第一人民医院</td><td class=""><span class="tag tag-green"><i class="d"></i>已上传</span></td></tr></tbody></table></div>
+</div>
+
+<div class="tab-panel" data-panel="p9">
+  <div class="row-between mb12"><div class="hr-title" style="margin:0">学术任职（2 条）</div>
+    <button class="btn btn-sm" data-toast="新增一条学术任职（原型演示）"><svg class="ico ico-14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7-7v14"/></svg>新增记录</button></div>
+  <div class="tbl-scroll" style="max-height:none"><table class="dt" style="border-top:1px solid var(--line-2)"><thead><tr><th style="width:200px">学会 / 协会名称</th><th>专业委员会</th><th style="width:150px">担任职务</th><th style="width:92px">届次</th><th style="width:190px">任职起止</th><th style="width:110px">任职状态</th></tr></thead><tbody><tr><td class="">江苏省护理学会</td><td class="">心血管护理专业委员会</td><td class=""><span class="tag">委员</span></td><td class="">第 3 届</td><td class=""><span class="num nowrap">2023-01 至 2027-12</span></td><td class=""><span class="tag tag-green"><i class="d"></i>在任</span></td></tr><tr><td class="">江城市护理学会</td><td class="">内科护理专业委员会</td><td class=""><span class="tag tag-purple">副主任委员</span></td><td class="">第 5 届</td><td class=""><span class="num nowrap">2020-01 至 2024-12</span></td><td class=""><span class="tag tag-gray"><i class="d"></i>已卸任</span></td></tr></tbody></table></div>
+</div>
+
+<div class="tab-panel" data-panel="p10">
+  <div class="stat-strip">
+    <div class="si"><span>发表论文</span><b>2 <small>篇</small></b></div>
+    <div class="si"><span>主持 / 参与课题</span><b>1 <small>项</small></b></div>
+    <div class="si"><span>护理创新 / 专利</span><b>1 <small>项</small></b></div>
+    <div class="si"><span>核心期刊收录</span><b>2 <small>篇</small></b></div>
+  </div>
+  <div class="row-between mb12"><div class="hr-title" style="margin:0">科研成果（4 条）</div>
+    <button class="btn btn-sm" data-toast="新增一条科研成果（原型演示）"><svg class="ico ico-14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7-7v14"/></svg>新增成果</button></div>
+  <div class="tbl-scroll" style="max-height:none"><table class="dt" style="border-top:1px solid var(--line-2)"><thead><tr><th style="width:110px">成果类型</th><th>成果题目 / 名称</th><th style="width:240px">期刊 / 项目来源</th><th style="width:104px">时间</th><th style="width:110px">本人排名</th><th style="width:120px">成果级别</th></tr></thead><tbody><tr><td class=""><span class="tag tag-amber">课题</span></td><td class="">慢性心力衰竭患者延续性护理模式效果评价</td><td class="">江城市科技局社会发展项目</td><td class="">2024-05</td><td class="">主持</td><td class=""><span class="tag tag-gray">市厅级课题</span></td></tr><tr><td class=""><span class="tag">论文</span></td><td class="">基于风险分层的院内静脉血栓防治护理路径构建</td><td class="">《中国护理管理》</td><td class="">2025-03</td><td class="">第 1 作者</td><td class=""><span class="tag tag-cyan">北大核心</span></td></tr><tr><td class=""><span class="tag">论文</span></td><td class="">护理质量敏感指标在病区管理中的应用研究</td><td class="">《中华现代护理杂志》</td><td class="">2023-08</td><td class="">第 2 作者</td><td class=""><span class="tag tag-gray">科技核心</span></td></tr><tr><td class=""><span class="tag tag-cyan">护理创新</span></td><td class="">一种可调节式床头抬高角度指示器</td><td class="">院级护理创新项目</td><td class="">2023-04</td><td class="">第 1 完成人</td><td class=""><span class="tag tag-gray">院级</span></td></tr></tbody></table></div>
+</div>
+
+<div class="tab-panel" data-panel="p11">
+  <div class="row-between mb12"><div class="hr-title" style="margin:0">奖惩情况（4 条）</div>
+    <button class="btn btn-sm" data-toast="新增一条奖惩记录（原型演示）"><svg class="ico ico-14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7-7v14"/></svg>新增记录</button></div>
+  <div class="tbl-scroll" style="max-height:none"><table class="dt" style="border-top:1px solid var(--line-2)"><thead><tr><th style="width:90px">类型</th><th>奖惩事项</th><th style="width:230px">授予 / 处理单位</th><th style="width:96px">级别</th><th style="width:96px">时间</th><th style="width:230px">文号</th></tr></thead><tbody><tr><td class=""><span class="tag tag-green">奖励</span></td><td class="">2025 年度优秀护士</td><td class="">江城市第一人民医院</td><td class=""><span class="tag tag-gray">院级</span></td><td class="">2025-12</td><td class=""><span class="num">江城一院〔2025〕128号</span></td></tr><tr><td class=""><span class="tag tag-green">奖励</span></td><td class="">江城市优秀护理工作者</td><td class="">江城市卫生健康委</td><td class=""><span class="tag">市级</span></td><td class="">2024-05</td><td class=""><span class="num">江城卫〔2024〕42号</span></td></tr><tr><td class=""><span class="tag tag-green">奖励</span></td><td class="">优秀带教老师</td><td class="">江城市第一人民医院</td><td class=""><span class="tag tag-gray">院级</span></td><td class="">2022-09</td><td class=""><span class="num">江城一院〔2022〕96号</span></td></tr><tr><td class=""><span class="tag tag-red">处分</span></td><td class="">护理不良事件（Ⅱ级）负主要责任，予以通报批评</td><td class="">江城市第一人民医院</td><td class=""><span class="tag tag-gray">院级</span></td><td class="">2021-03</td><td class=""><span class="num">江城一院护〔2021〕07号</span></td></tr></tbody></table></div>
+  <div class="mt12"><div class="notice red"><svg class="ico ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1zm-8-5v4m0 4h.01"/></svg><div>处分记录仅护理部与人事科可见，用于评优、晋升与岗位调整参考；当事人可在规定期限内提交申诉材料。</div></div></div>
+</div>
+
+<div class="tab-panel" data-panel="p12">
+  <div class="row-between mb12">
+    <div class="hr-title" style="margin:0">证件材料（14 份，已上传 13 份）</div>
+    <div class="row" style="gap:8px">
+      <button class="btn btn-sm" data-toast="已生成本人档案材料清单"><svg class="ico ico-14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12 15V3m9 12v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10l5 5l5-5"/></g></svg>导出清单</button>
+      <button class="btn btn-sm btn-primary" data-toast="请选择证件扫描件上传（支持 JPG / PNG / PDF，单个 ≤ 10 MB）"><svg class="ico ico-14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v12m5-7l-5-5l-5 5m14 7v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/></svg>上传证件</button>
+    </div>
+  </div>
+  <div class="cert-grid"><div class="cert">
+    <div class="ct"><svg class="ico ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M13 19a4 4 0 0 0-8 0m11-9h2m-2 4h2"/><circle cx="9" cy="12" r="3"/><rect width="20" height="14" x="2" y="5" rx="2"/></g></svg>护士执业证书</div>
+    <div class="li"><span>证件编号</span><b class="num">202600372041</b></div>
+    <div class="li"><span>发证 / 生效日期</span><b class="num">2021-11-05</b></div>
+    <div class="li"><span>有效期至</span><b class="num">2026-11-05</b></div>
+    <div class="li"><span>附件</span><b>护士执业证书.pdf <span class="muted num">2.4 MB</span></b></div>
+    <div class="foot"><span class="tag tag-amber"><i class="d"></i>即将到期</span>
+      <span class="row" style="gap:2px">
+        <button class="link-btn" data-toast="打开证件原件预览">预览</button><button class="link-btn" data-toast="开始下载证件扫描件">下载</button>
+      </span>
+    </div>
+  </div><div class="cert">
+    <div class="ct"><svg class="ico ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M13 19a4 4 0 0 0-8 0m11-9h2m-2 4h2"/><circle cx="9" cy="12" r="3"/><rect width="20" height="14" x="2" y="5" rx="2"/></g></svg>护士执业资格证书</div>
+    <div class="li"><span>证件编号</span><b class="num">201100263815</b></div>
+    <div class="li"><span>发证 / 生效日期</span><b class="num">2011-11-05</b></div>
+    <div class="li"><span>有效期至</span><b class="num">长期有效</b></div>
+    <div class="li"><span>附件</span><b>执业资格证书.jpg <span class="muted num">1.1 MB</span></b></div>
+    <div class="foot"><span class="tag tag-green"><i class="d"></i>有效</span>
+      <span class="row" style="gap:2px">
+        <button class="link-btn" data-toast="打开证件原件预览">预览</button><button class="link-btn" data-toast="开始下载证件扫描件">下载</button>
+      </span>
+    </div>
+  </div><div class="cert">
+    <div class="ct"><svg class="ico ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M13 19a4 4 0 0 0-8 0m11-9h2m-2 4h2"/><circle cx="9" cy="12" r="3"/><rect width="20" height="14" x="2" y="5" rx="2"/></g></svg>主管护师专业技术资格证书</div>
+    <div class="li"><span>证件编号</span><b class="num">2018023105226</b></div>
+    <div class="li"><span>发证 / 生效日期</span><b class="num">2018-06-20</b></div>
+    <div class="li"><span>有效期至</span><b class="num">长期有效</b></div>
+    <div class="li"><span>附件</span><b>主管护师资格证.jpg <span class="muted num">980 KB</span></b></div>
+    <div class="foot"><span class="tag tag-green"><i class="d"></i>有效</span>
+      <span class="row" style="gap:2px">
+        <button class="link-btn" data-toast="打开证件原件预览">预览</button><button class="link-btn" data-toast="开始下载证件扫描件">下载</button>
+      </span>
+    </div>
+  </div><div class="cert">
+    <div class="ct"><svg class="ico ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M13 19a4 4 0 0 0-8 0m11-9h2m-2 4h2"/><circle cx="9" cy="12" r="3"/><rect width="20" height="14" x="2" y="5" rx="2"/></g></svg>专科护士培训合格证书</div>
+    <div class="li"><span>证件编号</span><b class="num">JS2023350126</b></div>
+    <div class="li"><span>发证 / 生效日期</span><b class="num">2023-06-30</b></div>
+    <div class="li"><span>有效期至</span><b class="num">2028-06-30</b></div>
+    <div class="li"><span>附件</span><b>心血管专科护士证.pdf <span class="muted num">1.8 MB</span></b></div>
+    <div class="foot"><span class="tag tag-green"><i class="d"></i>有效</span>
+      <span class="row" style="gap:2px">
+        <button class="link-btn" data-toast="打开证件原件预览">预览</button><button class="link-btn" data-toast="开始下载证件扫描件">下载</button>
+      </span>
+    </div>
+  </div><div class="cert">
+    <div class="ct"><svg class="ico ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M13 19a4 4 0 0 0-8 0m11-9h2m-2 4h2"/><circle cx="9" cy="12" r="3"/><rect width="20" height="14" x="2" y="5" rx="2"/></g></svg>母婴保健技术考核合格证书</div>
+    <div class="li"><span>证件编号</span><b class="num">MB20240726</b></div>
+    <div class="li"><span>发证 / 生效日期</span><b class="num">2024-03-15</b></div>
+    <div class="li"><span>有效期至</span><b class="num">2027-03-15</b></div>
+    <div class="li"><span>附件</span><b>母婴保健合格证.jpg <span class="muted num">760 KB</span></b></div>
+    <div class="foot"><span class="tag tag-green"><i class="d"></i>有效</span>
+      <span class="row" style="gap:2px">
+        <button class="link-btn" data-toast="打开证件原件预览">预览</button><button class="link-btn" data-toast="开始下载证件扫描件">下载</button>
+      </span>
+    </div>
+  </div><div class="cert">
+    <div class="ct"><svg class="ico ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M13 19a4 4 0 0 0-8 0m11-9h2m-2 4h2"/><circle cx="9" cy="12" r="3"/><rect width="20" height="14" x="2" y="5" rx="2"/></g></svg>急救技能培训证书（BLS）</div>
+    <div class="li"><span>证件编号</span><b class="num">BLS20240519</b></div>
+    <div class="li"><span>发证 / 生效日期</span><b class="num">2024-05-20</b></div>
+    <div class="li"><span>有效期至</span><b class="num">2027-05-19</b></div>
+    <div class="li"><span>附件</span><b>BLS证书.pdf <span class="muted num">640 KB</span></b></div>
+    <div class="foot"><span class="tag tag-green"><i class="d"></i>有效</span>
+      <span class="row" style="gap:2px">
+        <button class="link-btn" data-toast="打开证件原件预览">预览</button><button class="link-btn" data-toast="开始下载证件扫描件">下载</button>
+      </span>
+    </div>
+  </div><div class="cert">
+    <div class="ct"><svg class="ico ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M13 19a4 4 0 0 0-8 0m11-9h2m-2 4h2"/><circle cx="9" cy="12" r="3"/><rect width="20" height="14" x="2" y="5" rx="2"/></g></svg>急救技能培训证书（ACLS）</div>
+    <div class="li"><span>证件编号</span><b class="num">ACLS20230907</b></div>
+    <div class="li"><span>发证 / 生效日期</span><b class="num">2023-09-08</b></div>
+    <div class="li"><span>有效期至</span><b class="num">2026-09-07</b></div>
+    <div class="li"><span>附件</span><b>ACLS证书.pdf <span class="muted num">712 KB</span></b></div>
+    <div class="foot"><span class="tag tag-red"><i class="d"></i>已过期</span>
+      <span class="row" style="gap:2px">
+        <button class="link-btn" data-toast="打开证件原件预览">预览</button><button class="link-btn" data-toast="开始下载证件扫描件">下载</button>
+      </span>
+    </div>
+  </div><div class="cert">
+    <div class="ct"><svg class="ico ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M13 19a4 4 0 0 0-8 0m11-9h2m-2 4h2"/><circle cx="9" cy="12" r="3"/><rect width="20" height="14" x="2" y="5" rx="2"/></g></svg>学历证书（本科）</div>
+    <div class="li"><span>证件编号</span><b class="num">10304202101188</b></div>
+    <div class="li"><span>发证 / 生效日期</span><b class="num">2021-01-10</b></div>
+    <div class="li"><span>有效期至</span><b class="num">长期有效</b></div>
+    <div class="li"><span>附件</span><b>本科毕业证.jpg <span class="muted num">1.4 MB</span></b></div>
+    <div class="foot"><span class="tag tag-green"><i class="d"></i>有效</span>
+      <span class="row" style="gap:2px">
+        <button class="link-btn" data-toast="打开证件原件预览">预览</button><button class="link-btn" data-toast="开始下载证件扫描件">下载</button>
+      </span>
+    </div>
+  </div><div class="cert">
+    <div class="ct"><svg class="ico ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M13 19a4 4 0 0 0-8 0m11-9h2m-2 4h2"/><circle cx="9" cy="12" r="3"/><rect width="20" height="14" x="2" y="5" rx="2"/></g></svg>学位证书</div>
+    <div class="li"><span>证件编号</span><b class="num">—</b></div>
+    <div class="li"><span>发证 / 生效日期</span><b class="num">—</b></div>
+    <div class="li"><span>有效期至</span><b class="num">—</b></div>
+    <div class="li"><span>附件</span><b class="t3">未上传</b></div>
+    <div class="foot"><span class="tag tag-amber"><i class="d"></i>待补传</span>
+      <span class="row" style="gap:2px">
+        <button class="link-btn" data-toast="请选择文件上传（支持 JPG/PNG/PDF，单个不超过 10 MB）">上传</button>
+      </span>
+    </div>
+  </div><div class="cert">
+    <div class="ct"><svg class="ico ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M13 19a4 4 0 0 0-8 0m11-9h2m-2 4h2"/><circle cx="9" cy="12" r="3"/><rect width="20" height="14" x="2" y="5" rx="2"/></g></svg>专业技术职务聘任文件</div>
+    <div class="li"><span>证件编号</span><b class="num">2021-21号</b></div>
+    <div class="li"><span>发证 / 生效日期</span><b class="num">2021-03-01</b></div>
+    <div class="li"><span>有效期至</span><b class="num">长期有效</b></div>
+    <div class="li"><span>附件</span><b>专科小组组长聘任.pdf <span class="muted num">520 KB</span></b></div>
+    <div class="foot"><span class="tag tag-green"><i class="d"></i>有效</span>
+      <span class="row" style="gap:2px">
+        <button class="link-btn" data-toast="打开证件原件预览">预览</button><button class="link-btn" data-toast="开始下载证件扫描件">下载</button>
+      </span>
+    </div>
+  </div><div class="cert">
+    <div class="ct"><svg class="ico ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M13 19a4 4 0 0 0-8 0m11-9h2m-2 4h2"/><circle cx="9" cy="12" r="3"/><rect width="20" height="14" x="2" y="5" rx="2"/></g></svg>劳动合同</div>
+    <div class="li"><span>证件编号</span><b class="num">HT202001010058</b></div>
+    <div class="li"><span>发证 / 生效日期</span><b class="num">2020-01-01</b></div>
+    <div class="li"><span>有效期至</span><b class="num">2028-12-31</b></div>
+    <div class="li"><span>附件</span><b>劳动合同扫描件.pdf <span class="muted num">3.2 MB</span></b></div>
+    <div class="foot"><span class="tag tag-green"><i class="d"></i>有效</span>
+      <span class="row" style="gap:2px">
+        <button class="link-btn" data-toast="打开证件原件预览">预览</button><button class="link-btn" data-toast="开始下载证件扫描件">下载</button>
+      </span>
+    </div>
+  </div><div class="cert">
+    <div class="ct"><svg class="ico ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M13 19a4 4 0 0 0-8 0m11-9h2m-2 4h2"/><circle cx="9" cy="12" r="3"/><rect width="20" height="14" x="2" y="5" rx="2"/></g></svg>个人免冠照片</div>
+    <div class="li"><span>证件编号</span><b class="num">—</b></div>
+    <div class="li"><span>发证 / 生效日期</span><b class="num">2026-01-08</b></div>
+    <div class="li"><span>有效期至</span><b class="num">长期有效</b></div>
+    <div class="li"><span>附件</span><b>免冠照片.jpg <span class="muted num">240 KB</span></b></div>
+    <div class="foot"><span class="tag tag-green"><i class="d"></i>有效</span>
+      <span class="row" style="gap:2px">
+        <button class="link-btn" data-toast="打开证件原件预览">预览</button><button class="link-btn" data-toast="开始下载证件扫描件">下载</button>
+      </span>
+    </div>
+  </div><div class="cert">
+    <div class="ct"><svg class="ico ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M13 19a4 4 0 0 0-8 0m11-9h2m-2 4h2"/><circle cx="9" cy="12" r="3"/><rect width="20" height="14" x="2" y="5" rx="2"/></g></svg>入职体检报告</div>
+    <div class="li"><span>证件编号</span><b class="num">TJ20260412</b></div>
+    <div class="li"><span>发证 / 生效日期</span><b class="num">2026-04-12</b></div>
+    <div class="li"><span>有效期至</span><b class="num">2027-04-11</b></div>
+    <div class="li"><span>附件</span><b>体检报告.pdf <span class="muted num">1.9 MB</span></b></div>
+    <div class="foot"><span class="tag tag-green"><i class="d"></i>有效</span>
+      <span class="row" style="gap:2px">
+        <button class="link-btn" data-toast="打开证件原件预览">预览</button><button class="link-btn" data-toast="开始下载证件扫描件">下载</button>
+      </span>
+    </div>
+  </div><div class="cert">
+    <div class="ct"><svg class="ico ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M13 19a4 4 0 0 0-8 0m11-9h2m-2 4h2"/><circle cx="9" cy="12" r="3"/><rect width="20" height="14" x="2" y="5" rx="2"/></g></svg>身份证扫描件（正反面）</div>
+    <div class="li"><span>证件编号</span><b class="num">320103198803120624</b></div>
+    <div class="li"><span>发证 / 生效日期</span><b class="num">2010-08-16</b></div>
+    <div class="li"><span>有效期至</span><b class="num">长期有效</b></div>
+    <div class="li"><span>附件</span><b>身份证.pdf <span class="muted num">1.2 MB</span></b></div>
+    <div class="foot"><span class="tag tag-green"><i class="d"></i>有效</span>
+      <span class="row" style="gap:2px">
+        <button class="link-btn" data-toast="打开证件原件预览">预览</button><button class="link-btn" data-toast="开始下载证件扫描件">下载</button>
+      </span>
+    </div>
+  </div></div>
+  <div class="mt16">
+    <div class="upload-box" data-toast="请选择证件扫描件上传（支持 JPG / PNG / PDF，单个 ≤ 10 MB）">
+      <svg class="ico " viewBox="0 0 24 24" fill="none" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v12m5-7l-5-5l-5 5m14 7v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/></svg>
+      <div style="font-size:13px;margin-bottom:4px">将文件拖拽到此处，或点击选择文件上传</div>
+      <div class="side-note">支持 JPG / PNG / PDF，单个文件不超过 10 MB；上传后需经护理部审核方可生效。</div>
+    </div>
+  </div>
+</div>
+    </div>
+  </div>
+  <div>
+<div class="card rail-card" style="margin-bottom:14px">
+  <div class="card-hd"><h2>档案审核状态</h2></div>
+  <div class="card-bd">
+    <div class="row-between mb8"><span class="t2 fs12">当前状态</span><span class="row" style="gap:6px"><span class="tag tag-green"><i class="d"></i>已审核</span><span class="tag">档案完整度 94%</span></span></div>
+    <div class="dl two"><div><span class="k w">审核人</span><span class="v">王丽萍（护理部）</span></div><div><span class="k w">审核时间</span><span class="v"><span class="num">2026-08-12 15:40</span></span></div><div><span class="k w">最近更新</span><span class="v"><span class="num">2026-10-08 14:22</span></span></div><div><span class="k w">变更记录</span><span class="v">27 条</span></div></div>
+    <div class="row mt12" style="gap:8px">
+      <button class="btn btn-sm" data-toast="已打开变更记录列表（原型演示）"><svg class="ico ico-14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9a9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5m4-1v5l4 2"/></g></svg>变更记录</button>
+      <button class="btn btn-sm" data-modal-open="#mEdit"><svg class="ico ico-14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.375 2.625a1 1 0 0 1 3 3l-9.013 9.014a2 2 0 0 1-.853.505l-2.873.84a.5.5 0 0 1-.62-.62l.84-2.873a2 2 0 0 1 .506-.852z"/></g></svg>提交变更</button>
+    </div>
+  </div>
+</div>
+
+<div class="card rail-card" style="margin-bottom:14px">
+  <div class="card-hd"><h2>执业资格提醒</h2><div class="hd-right"><span class="tag tag-red">需跟进</span></div></div>
+  <div class="card-bd">
+    <div class="row-between"><span class="fs13 fw6">护士执业证书</span><span class="cd cd-30"><svg class="ico ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></g></svg>剩 25 天</span></div>
+    <div class="side-note" style="margin-top:6px">
+      证书编号：<span class="num">202600372041</span><br>
+      注册有效期：<span class="num">2021-11-05</span> 至 <span class="num">2026-11-05</span><br>
+      责任科室：护理部　责任护士长：本人 / 病区护士长
+    </div>
+    <div class="row mt12" style="gap:8px">
+      <button class="btn btn-sm btn-primary" data-toast="已向本人及病区护士长发送续证提醒（短信 + 站内消息）"><svg class="ico ico-14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11zm7.318-19.539l-10.94 10.939"/></svg>立即提醒</button>
+      <button class="btn btn-sm" data-modal-open="#mRenew"><svg class="ico ico-14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M8 2v3m8-3v3"/><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/></g></svg>登记续期</button>
+    </div>
+  </div>
+</div>
+
+<div class="card rail-card" style="margin-bottom:14px">
+  <div class="card-hd"><h2>材料统计</h2></div>
+  <div class="card-bd">
+    <div class="hb">
+      <div class="hb-row" style="grid-template-columns:118px 1fr 96px">
+    <span class="lb">证件材料</span>
+    <span class="hb-track" style="height:12px"><i class="hb-fill" style="width:93%;background:#1668B3"></i></span>
+    <span class="vl"><b>13</b><span>/ 14</span><span style="margin-left:6px;color:#157A45">93%</span></span>
+  </div>
+      <div class="hb-row" style="grid-template-columns:118px 1fr 96px">
+    <span class="lb">证明材料</span>
+    <span class="hb-track" style="height:12px"><i class="hb-fill" style="width:100%;background:#3AA06A"></i></span>
+    <span class="vl"><b>18</b><span>/ 18</span><span style="margin-left:6px;color:#157A45">100%</span></span>
+  </div>
+      <div class="hb-row" style="grid-template-columns:118px 1fr 96px">
+    <span class="lb">照片与扫描件</span>
+    <span class="hb-track" style="height:12px"><i class="hb-fill" style="width:94%;background:#E0A33C"></i></span>
+    <span class="vl"><b>31</b><span>/ 33</span><span style="margin-left:6px;color:#157A45">94%</span></span>
+  </div>
+    </div>
+    <div class="notice mt12"><svg class="ico ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3m.08 4h.01"/></g></svg><div>共 33 份材料，其中 2 份待补传（学位证书、2026 年度继续教育学分证明）。</div></div>
+  </div>
+</div>
+
+<div class="card rail-card">
+  <div class="card-hd"><h2>最近更新记录</h2><div class="hd-right"><a class="btn btn-text btn-sm" href="logs.html">全部</a></div></div>
+  <div class="card-bd">
+    <div class="tl">
+      <div class="tl-item now">
+        <div class="tl-hd"><b>继续教育</b><span class="tl-time num">2026-10-08 14:22</span></div>
+        <div class="tl-bd">本人提交 2026 年度国家级学分证明 <span class="tag tag-line">待护理部审核</span></div>
+      </div><div class="tl-item">
+        <div class="tl-hd"><b>培训考核</b><span class="tl-time num">2026-09-30 10:05</span></div>
+        <div class="tl-bd">护理部录入第三季度三基三严考核结果 <span class="tag tag-line">已生效</span></div>
+      </div><div class="tl-item">
+        <div class="tl-hd"><b>任职经历</b><span class="tl-time num">2026-08-12 15:40</span></div>
+        <div class="tl-bd">人事科更新专科护理小组组长聘任信息 <span class="tag tag-line">已审核</span></div>
+      </div><div class="tl-item">
+        <div class="tl-hd"><b>证件材料</b><span class="tl-time num">2026-06-20 09:12</span></div>
+        <div class="tl-bd">上传心血管专科护士证书扫描件 <span class="tag tag-line">已生效</span></div>
+      </div><div class="tl-item">
+        <div class="tl-hd"><b>执业资格</b><span class="tl-time num">2026-03-05 08:30</span></div>
+        <div class="tl-bd">信息中心批量同步执业证书注册信息 <span class="tag tag-line">系统同步</span></div>
+      </div>
+    </div>
+  </div>
+</div></div>
+</div>
+  </div>
+</main>
+<div class="mask"></div>
+
+<div class="modal md" id="mEdit" role="dialog" aria-modal="true" aria-label="提交档案信息变更申请">
+    <div class="modal-hd">
+      <h3><svg class="ico ico-18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.375 2.625a1 1 0 0 1 3 3l-9.013 9.014a2 2 0 0 1-.853.505l-2.873.84a.5.5 0 0 1-.62-.62l.84-2.873a2 2 0 0 1 .506-.852z"/></g></svg>提交档案信息变更申请</h3>
+      <button class="btn btn-icon btn-text x" data-close aria-label="关闭"><svg class="ico ico-18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 6L6 18M6 6l12 12"/></svg></button>
+    </div>
+    <div class="modal-bd"><div class="form-grid one">
+    <div class="form-fld">
+    <label class="req">变更模块</label>
+    <div class="fc"><select><option selected>基本信息</option><option>教育经历</option><option>工作经历</option><option>任职经历</option><option>继续教育</option><option>培训考核</option><option>公益服务</option><option>比赛竞赛</option><option>学术任职</option><option>科研成果</option><option>奖惩情况</option><option>证件材料</option></select></div>
+  </div>
+    <div class="form-fld">
+    <label class="req">变更字段</label>
+    <div class="fc"><select><option>所属护理单元</option><option>职称</option><option>职务</option><option>护理能级</option><option>最高学历</option><option selected>联系电话</option><option>执业证书有效期</option><option>其他</option></select></div>
+  </div>
+    <div class="form-fld">
+    <label class="">变更前内容</label>
+    <div class="fc"><input type="text" value="13851732660" readonly style="background:var(--line-4);color:var(--t2)"></div>
+  </div>
+    <div class="form-fld">
+    <label class="req">变更后内容</label>
+    <div class="fc"><input type="text" value="13851732688"></div>
+  </div>
+    <div class="form-fld">
+    <label class="req">变更原因</label>
+    <div class="fc"><textarea placeholder="请说明变更原因，如：本人手机号变更、聘任文件更新等" style="min-height:70px"></textarea></div>
+  </div>
+    <div class="form-fld">
+    <label class="">证明材料</label>
+    <div class="fc"><div class="upload-box" style="padding:16px"><svg class="ico " viewBox="0 0 24 24" fill="none" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v12m5-7l-5-5l-5 5m14 7v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/></svg><div style="font-size:12.5px;margin-top:6px">上传变更依据材料（聘任文件 / 证书 / 情况说明）</div></div><div class="hint">重要字段（姓名、身份证号、工号、执业证书编号）变更需上传支撑材料</div></div>
+  </div>
+  </div></div>
+    <div class="modal-ft">
+      <div class="lft"><svg class="ico ico-14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3m.08 4h.01"/></g></svg> 提交后由病区护士长与护理部两级审核，审核期间原信息继续有效</div>
+      <button class="btn" data-close>取消</button><button class="btn btn-primary" data-toast="变更申请已提交，等待病区护士长初审" data-close>提交申请</button>
+    </div>
+  </div>
+<div class="modal md" id="mRenew" role="dialog" aria-modal="true" aria-label="登记护士执业证书延续注册">
+    <div class="modal-hd">
+      <h3><svg class="ico ico-18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M8 2v3m8-3v3"/><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/></g></svg>登记护士执业证书延续注册</h3>
+      <button class="btn btn-icon btn-text x" data-close aria-label="关闭"><svg class="ico ico-18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 6L6 18M6 6l12 12"/></svg></button>
+    </div>
+    <div class="modal-bd"><div class="form-grid">
+    <div class="form-fld">
+    <label class="req">证书类型</label>
+    <div class="fc"><select><option selected>护士执业证书</option><option>专科护士培训合格证书</option><option>急救技能培训证书（BLS）</option><option>母婴保健技术考核合格证书</option></select></div>
+  </div>
+    <div class="form-fld">
+    <label class="req">证书编号</label>
+    <div class="fc"><input type="text" value="202600372041"></div>
+  </div>
+    <div class="form-fld">
+    <label class="">原有效期至</label>
+    <div class="fc"><input type="date" value="2026-11-05" readonly style="background:var(--line-4)"></div>
+  </div>
+    <div class="form-fld">
+    <label class="req">新有效期至</label>
+    <div class="fc"><input type="date" value="2031-11-05"><div class="hint">护士执业证书注册有效期为 5 年</div></div>
+  </div>
+    <div class="form-fld">
+    <label class="req">发证机关</label>
+    <div class="fc"><select><option selected>江城市卫生健康委员会</option><option>江苏省卫生健康委员会</option></select></div>
+  </div>
+    <div class="form-fld">
+    <label class="req">办理日期</label>
+    <div class="fc"><input type="date" value="2026-10-10"></div>
+  </div>
+    <div class="form-fld full">
+    <label class="req">扫描件上传</label>
+    <div class="fc"><div class="upload-box" style="padding:16px"><svg class="ico " viewBox="0 0 24 24" fill="none" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v12m5-7l-5-5l-5 5m14 7v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/></svg><div style="font-size:12.5px;margin-top:6px">上传新证书扫描件（JPG / PDF）</div></div></div>
+  </div>
+    <div class="form-fld full">
+    <label class="">备注</label>
+    <div class="fc"><textarea placeholder="如延续注册办理批次、经办人等" style="min-height:64px"></textarea></div>
+  </div>
+  </div></div>
+    <div class="modal-ft">
+      <div class="lft"><svg class="ico ico-14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m21.73 18l-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3M12 9v4m0 4h.01"/></svg> 保存后系统将重算到期提醒并关闭对应待办</div>
+      <button class="btn" data-close>取消</button><button class="btn btn-primary" data-toast="已登记延续注册信息，新有效期至 2031-11-05，提醒状态已更新" data-close>保存并更新提醒</button>
+    </div>
+  </div>
+<script src="assets/app.js"></script>
+</body>
+</html>
